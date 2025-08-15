@@ -168,6 +168,95 @@ What gets created when you RUN claude-launcher.bat:
 4. **Return**: Run `claude-launcher.bat` again to resume exactly where you left off!
 
 
+## 🎯 AFTER LAUNCH - GETTING STARTED
+
+---
+
+### What Happens When You Launch:
+1. **WSL Ubuntu opens** in a tmux session
+2. **Claude CLI starts automatically** with `claude code --resume`
+3. **You're ready to start** - no additional commands needed
+
+*Note: If Claude doesn't start automatically, type `claude` in the terminal*
+
+### First Time Setup - IMPORTANT:
+
+**Step 1: Enter Plan Mode to define your project**
+- Press `Shift+Tab` to enter plan mode
+- Discuss your project idea with Claude
+- Work out the details together:
+```
+What kind of project do I want to build?
+What technologies should I use?
+What's the best structure?
+What conventions should we follow?
+```
+
+**Step 2: Save the plan to CLAUDE.md**
+After planning, tell Claude:
+```
+We've finished planning. Please update CLAUDE.md with:
+- The project purpose we discussed
+- The tech stack we decided on
+- The project structure we planned
+- Any conventions and standards we agreed on
+- Current status and next steps
+Exit plan mode and implement these updates to CLAUDE.md
+```
+
+**Step 3: Have Claude read the context**
+```
+Read CLAUDE.md to confirm you have the project context
+```
+
+Now Claude knows your project and will maintain this context!
+
+### Understanding the Generated Files:
+
+**CLAUDE.md - Your Project's Memory Bank**
+- Auto-generated with basic project info (name, path)
+- **YOU ADD:** Project details, tech stack, conventions, goals
+- **PURPOSE:** Permanent reference that survives context compaction
+- **WHEN TO UPDATE:** Whenever project scope or approach changes
+
+**claude.config - System Configuration** 
+- Auto-generated settings file
+- Documents project isolation and paths
+- **DON'T EDIT** - it's for system reference only
+- Shows Claude's working directory boundaries
+
+### Daily Workflow:
+1. **Run launcher** → Claude resumes conversation via tmux
+2. **Continue working** → Picks up exactly where you left off
+3. **See percentage indicator?** → Run context preservation prompt
+4. **Major changes?** → Update CLAUDE.md with new information
+
+
+## ⌨️ CLAUDE CLI KEYBOARD SHORTCUTS
+
+---
+
+### Essential Shortcuts:
+- **`Shift+Tab`** - Enter/exit plan mode (planning before coding)
+- **`Ctrl+C`** - Cancel current operation
+- **`Ctrl+D`** - Exit Claude CLI
+- **`Ctrl+L`** - Clear screen
+- **`Ctrl+B, then D`** - Detach tmux (keep session running)
+- **`Up/Down arrows`** - Navigate command history
+- **`Tab`** - Auto-complete file paths
+
+### Plan Mode:
+- **When to use:** Before starting work, when designing features
+- **What it does:** Claude thinks through problems without executing
+- **Exit plan mode:** Shift+Tab again or follow Claude's prompts
+
+### Tmux Controls (Session Management):
+- **`Ctrl+B, D`** - Detach session (keeps running)
+- **`Ctrl+B, [`** - Scroll mode (use arrows/PageUp/PageDown)
+- **`q`** - Exit scroll mode
+- **`Ctrl+B, ?`** - Show all tmux shortcuts
+
+
 ## ⚠️ CRITICAL: Preventing Context Loss
 
 ---
