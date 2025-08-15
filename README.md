@@ -1,4 +1,4 @@
-#Persistant Claude Code
+# Persistant Claude Code
 
 
 ![Persistent Claude Banner](./PERSISTANT_CLAUDE_CODE.png)
