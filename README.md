@@ -230,6 +230,24 @@ tmux commands:
 - No API keys needed - uses your Claude Pro subscription
 - Claude is isolated to your project directory - won't accidentally read parent folders or follow imports outside
 
+  ## ## 🚀 Roadmap
+
+### Current Features (v1.0)
+- ✅ Project isolation
+- ✅ Persistent sessions per project
+- ✅ Directory access restrictions
+
+### Planned Features (v2.0)
+- [ ] Context checkpoints - Save/load specific context states
+- [ ] Checkpoint browser - Easy selection of saved contexts  
+- [ ] Export context to markdown for team sharing
+- [ ] Auto-checkpoint on task completion
+
+### Future Ideas
+- [ ] Context templates for common workflows
+- [ ] Team checkpoint sharing
+- [ ] Integration with git branches
+
 ## 🤝 Contributing
 
 Feel free to submit issues and enhancement requests!
