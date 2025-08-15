@@ -45,13 +45,19 @@ A Windows template that provides TRUE conversation persistence for Claude Code u
 
 ## ✅ SECURITY STATUS - VERIFIED SAFE
 
-This template contains a simple batch file that:
+This template contains a batch file that:
 - Creates text files (CLAUDE.md and claude.config) in your project
 - Launches WSL Ubuntu with tmux for session persistence
-- Runs Claude Code CLI with --resume flag for conversation continuity
-- Optionally downloads Node.js from the official Microsoft site
+- Runs Claude Code CLI with --resume flag to continue previous conversations
 
-**No system modifications, no data collection, completely transparent!**
+**Required installations (with your approval):**
+- WSL Ubuntu (for tmux persistence) - without this, no conversation persistence
+- Node.js from nodejs.org (for npm) - without this, can't install Claude
+- Claude Code CLI via npm - without this, nothing works
+
+**The script asks for permission before each installation via Y/N prompts.**
+
+All activities are transparent and visible in the batch file code. No hidden operations or data collection.
 
 👉 Want to verify yourself? See the [optional security audit](#optional-security-verification) below
 
