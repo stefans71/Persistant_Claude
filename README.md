@@ -39,7 +39,7 @@ For your security, **please verify this repository yourself** before using:
 2. Copy and paste this comprehensive security audit prompt:
 
 ```
-Please perform a COMPREHENSIVE SECURITY AUDIT of this entire repository. Use all available tools (Read, Grep, LS, etc.) to thoroughly examine EVERY file for malicious code, security vulnerabilities, and privacy risks.
+Please perform a COMPREHENSIVE SECURITY AUDIT of the repository located at the current directory where this README.md file exists. Use all available tools (Read, Grep, LS, etc.) to thoroughly examine EVERY file in this directory for malicious code, security vulnerabilities, and privacy risks.
 
 ## SYSTEM SECURITY CHECKS:
 1. Registry modifications beyond documented WSL installation
