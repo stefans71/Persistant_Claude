@@ -58,7 +58,7 @@ A simple Windows template that helps you manage project context when using Claud
 ### You'll Need:
 
 ✅ **Windows 10/11**  
-✅ **Claude Code** (Desktop app or web version)  
+✅ **Claude Code CLI** (Command-line interface version)  
 ✅ That's it!
 
 
@@ -71,7 +71,7 @@ A simple Windows template that helps you manage project context when using Claud
 1. Download/clone this repository
 2. Copy setup-project.bat to your project
 3. Run setup-project.bat
-4. Click start-claude.bat to launch Claude Code
+4. Click start-claude.bat to launch Claude Code CLI
 5. Tell Claude to read CLAUDE.md
 ```
 
@@ -83,13 +83,13 @@ A simple Windows template that helps you manage project context when using Claud
 ### 🆕 For New Projects
 1. Copy **setup-project.bat** to your new project folder
 2. Double-click **setup-project.bat**
-3. Double-click **start-claude.bat** to launch Claude Code
+3. Double-click **start-claude.bat** to launch Claude Code CLI
 
 
 ### 📂 For Existing Projects
 1. Copy **setup-project.bat** to your project
 2. Run **setup-project.bat**
-3. Use **start-claude.bat** to launch Claude Code
+3. Use **start-claude.bat** to launch Claude Code CLI
 
 
 ## 🎯 HOW IT WORKS
@@ -98,8 +98,8 @@ A simple Windows template that helps you manage project context when using Claud
 
 1. **Run setup-project.bat** in your project folder
 2. **It creates CLAUDE.md** with project context
-3. **It creates start-claude.bat** to launch Claude Code
-4. **Click start-claude.bat** and Claude Code opens with your project
+3. **It creates start-claude.bat** to launch Claude Code CLI
+4. **Click start-claude.bat** and Claude Code CLI opens in your project directory
 5. **Tell Claude to read CLAUDE.md** for context
 
 
@@ -116,7 +116,7 @@ claude-project-template/
 
 After running setup-project.bat:
 ├── CLAUDE.md                    # Project context (generated)
-└── start-claude.bat             # Click to launch Claude Code (generated)
+└── start-claude.bat             # Click to launch Claude Code CLI (generated)
 ```
 
 
@@ -125,7 +125,7 @@ After running setup-project.bat:
 ---
 
 1. **Setup**: Run `setup-project.bat` in your project
-2. **Launch**: Click `start-claude.bat` 
+2. **Launch**: Click `start-claude.bat` to open Claude Code CLI 
 3. **Context**: Say "Read the CLAUDE.md file for project context"
 4. **Work**: Claude now knows about your project!
 
@@ -135,13 +135,22 @@ After running setup-project.bat:
 ---
 
 - Edit CLAUDE.md to add project-specific notes
-- The launcher finds Claude Code automatically
+- The launcher starts Claude Code CLI (`claude-code` command)
 - Works with any Windows project folder
 - Conversations persist through system restarts
 - Each project folder becomes a persistent workspace
 - No API keys needed - uses your Claude Pro subscription
 - Claude is isolated to your project directory - won't accidentally read parent folders or follow imports outside
 
+
+## 📝 RECENT UPDATES
+
+---
+
+### Latest Changes (August 15, 2025)
+- ✅ Fixed start-claude.bat to properly launch Claude Code CLI instead of desktop app
+- ✅ Now correctly uses `claude-code` command with fallback to `claude`
+- ✅ Updated installation instructions for CLI version
 
 ## 🚀 ROADMAP
 
