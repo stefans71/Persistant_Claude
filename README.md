@@ -1,4 +1,8 @@
-# Claude Project Manager
+Persistant Claude Code
+
+![Persistent Claude Banner](./PERSISTANT_CLAUDE_CODE.png)
+
+# 🚀 Persistent Claude Project Manager
 
 A Windows batch template that provides persistent Claude Code sessions for multiple projects simultaneously. Each project maintains its own conversation history and context.
 
