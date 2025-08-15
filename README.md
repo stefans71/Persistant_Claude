@@ -165,7 +165,7 @@ Created to solve the problem of managing multiple Claude Code projects with pers
 **Last developer verification:** August 15, 2025  
 **Status:** Clean - No issues found
 
-### Verify Repository Security with Claude Code
+**Verify Repository Security with Claude Code:**
 
 For maximum security, we encourage you to verify this repository yourself before using it. Simply:
 
@@ -174,7 +174,7 @@ For maximum security, we encourage you to verify this repository yourself before
 3. Claude will thoroughly check all files for any security issues
 4. Only proceed if you receive a clear "SAFE" verdict
 
-### 📋 Security Audit Prompt
+**📋 Security Audit Prompt**
 
 Copy and paste this entire prompt into Claude Code:
 
@@ -363,7 +363,7 @@ FINAL VERDICT: [SAFE/UNSAFE]
 BE EXTREMELY THOROUGH - User security depends on your analysis!
 ```
 
-### After Running the Security Audit:
+**After Running the Security Audit:**
 - ✅ **All green checkmarks** = Safe to use
 - ⚠️ **Yellow warnings** = Review the notes but likely safe
 - 🚫 **Any red X** = DO NOT USE - malicious code detected
