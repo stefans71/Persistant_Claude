@@ -1,0 +1,34 @@
+#!/bin/bash
+# Claude launcher script for tmux sessions
+
+# Get the project directory and name
+PROJECT_DIR="{{WSL_PATH}}"
+PROJECT_NAME="{{PROJECT_NAME}}"
+SESSION_NAME="claude-{{SESSION_NAME}}"
+
+# Change to project directory
+cd "$PROJECT_DIR"
+
+# Source bashrc to get functions and PATH
+source ~/.bashrc
+
+# Ensure NVM and Claude are in PATH
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# Check if tmux session exists
+if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+    echo "Attaching to existing tmux session: $SESSION_NAME"
+    tmux attach-session -t "$SESSION_NAME"
+else
+    echo "Creating new tmux session: $SESSION_NAME for project: $PROJECT_NAME"
+    
+    # Create a new tmux session with Claude
+    # Use -c to continue the most recent conversation in this directory
+    tmux new-session -s "$SESSION_NAME" -c "$PROJECT_DIR" -n "$PROJECT_NAME" \
+        "echo 'Starting Claude Code for $PROJECT_NAME...'; \
+         echo 'Project directory: $PROJECT_DIR'; \
+         echo ''; \
+         bash -l -c 'claude code -c' || bash -l -c 'claude code'; \
+         bash"
+fi

@@ -1,0 +1,17 @@
+# Generated files (created by setup-project.bat)
+claude.bat
+launch-claude.sh
+
+# Claude directories
+.claude/
+
+# Temporary files
+*.tmp
+*.log
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Don't ignore templates
+!*.template
