@@ -101,6 +101,13 @@ When you run `claude-launcher.bat`, it automatically:
 ---
 
 ### 🆕 For New Projects
+
+**Option A: Use GitHub Template (Easiest!)**
+1. Click the green **"Use this template"** button on GitHub
+2. Create your new repository
+3. Clone it locally and run **claude-launcher.bat**
+
+**Option B: Download/Clone**
 1. Download/clone this template repository
 2. Copy **claude-launcher.bat** to your new project folder
 3. Run **claude-launcher.bat** - it will:
