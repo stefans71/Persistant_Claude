@@ -30,9 +30,9 @@ A simple Windows template that helps you manage project context when using Claud
 ---
 
 - **Creates CLAUDE.md files**: A context file for each project
-- **Simple Setup**: Just run setup-project.bat
-- **No Complex Installation**: Works with your existing Claude Code
-- **Project Organization**: Helps Claude understand which project you're working on
+- **One-File Solution**: Just run claude-launcher.bat
+- **Fully Automated**: Installs everything needed automatically
+- **Project Isolation**: Each project maintains its own persistent context
 
 
 
@@ -62,7 +62,7 @@ A simple Windows template that helps you manage project context when using Claud
 
 ### 🎯 Fully Automated Installation:
 
-When you run `start-claude.bat`, it automatically:
+When you run `claude-launcher.bat`, it automatically:
 
 1. **Checks for Node.js** - If not found, downloads and installs it for you
 2. **Installs Claude Code CLI** - Automatically runs `npm install -g @anthropic-ai/claude-code`
@@ -78,10 +78,9 @@ When you run `start-claude.bat`, it automatically:
 ### Simple Setup:
 ```batch
 1. Download/clone this repository
-2. Copy setup-project.bat to your project
-3. Run setup-project.bat
-4. Click start-claude.bat to launch Claude Code CLI
-5. Tell Claude to read CLAUDE.md
+2. Copy claude-launcher.bat to your project
+3. Run claude-launcher.bat
+4. When Claude opens, type: "Read CLAUDE.md"
 ```
 
 
@@ -91,19 +90,17 @@ When you run `start-claude.bat`, it automatically:
 
 ### 🆕 For New Projects
 1. Download/clone this template repository
-2. Copy the entire folder to your desired location
-3. Rename the folder to your project name
-4. Run **setup-project.bat** (updates all files with your project name)
-5. Run **start-claude.bat** - it will:
+2. Copy **claude-launcher.bat** to your new project folder
+3. Run **claude-launcher.bat** - it will:
+   - Create CLAUDE.md context file
    - Auto-install Node.js if needed
    - Auto-install Claude Code CLI if needed
    - Launch Claude Code in your project
 
 
 ### 📂 For Existing Projects
-1. Copy **setup-project.bat** from this template to your existing project
-2. Run **setup-project.bat** (creates CLAUDE.md and start-claude.bat)
-3. Run **start-claude.bat** - it handles all installations automatically
+1. Copy **claude-launcher.bat** from this template to your existing project
+2. Run **claude-launcher.bat** - it handles everything automatically
 
 **First time users:** The automated installer will download Node.js (~30MB) and Claude Code CLI. This only happens once!
 
@@ -112,11 +109,10 @@ When you run `start-claude.bat`, it automatically:
 
 ---
 
-1. **Run setup-project.bat** in your project folder
-2. **It creates CLAUDE.md** with project context
-3. **It creates start-claude.bat** to launch Claude Code CLI
-4. **Click start-claude.bat** and Claude Code CLI opens in your project directory
-5. **Tell Claude to read CLAUDE.md** for context
+1. **Run claude-launcher.bat** in your project folder
+2. **It creates CLAUDE.md** with project context automatically
+3. **It launches Claude Code CLI** in your project directory
+4. **Tell Claude to read CLAUDE.md** for persistent context
 
 
 ## 📝 PROJECT STRUCTURE
@@ -125,14 +121,14 @@ When you run `start-claude.bat`, it automatically:
 
 ```
 claude-project-template/
-├── setup-project.bat            # Run this to set up your project
+├── claude-launcher.bat          # The all-in-one launcher
 ├── README.md                    # This documentation
-├── SETUP-GUIDE-FOR-SHARING.md  # Quick setup guide
-└── LICENSE                      # MIT License
+├── LICENSE                      # MIT License
+└── PERSISTANT_CLAUDE_CODE.png   # Banner image
 
-After running setup-project.bat:
+After running claude-launcher.bat:
 ├── CLAUDE.md                    # Project context (generated)
-└── start-claude.bat             # Click to launch Claude Code CLI (generated)
+└── claude.config                # Project settings (generated)
 ```
 
 
@@ -140,10 +136,9 @@ After running setup-project.bat:
 
 ---
 
-1. **Setup**: Run `setup-project.bat` in your project
-2. **Launch**: Click `start-claude.bat` to open Claude Code CLI 
-3. **Context**: Say "Read the CLAUDE.md file for project context"
-4. **Work**: Claude now knows about your project!
+1. **Run**: Execute `claude-launcher.bat` in your project
+2. **Context**: When Claude opens, type "Read CLAUDE.md"
+3. **Work**: Claude now has your project's persistent context!
 
 
 ## 💡 PRO TIPS
@@ -164,10 +159,10 @@ After running setup-project.bat:
 ---
 
 ### Latest Changes (August 15, 2025)
-- ✅ Fixed start-claude.bat to properly launch Claude Code CLI instead of desktop app
-- ✅ Removed WSL dependency - now works with Windows-native Node.js
+- ✅ **NEW: Single-file solution** - `claude-launcher.bat` does everything
 - ✅ **FULLY AUTOMATED** - Automatically installs Node.js and Claude Code CLI if needed
-- ✅ Zero manual setup required - just run the batch files!
+- ✅ Works with Windows-native Node.js OR WSL
+- ✅ Zero manual setup required - just run claude-launcher.bat!
 
 ## 🚀 ROADMAP
 
