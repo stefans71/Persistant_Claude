@@ -7,14 +7,25 @@ for %%I in (.) do set "PROJECT_NAME=%%~nxI"
 :: Get the full current directory path
 set "PROJECT_DIR=%CD%"
 
+:: Convert Windows path to WSL path for tmux
+set "WSL_PATH=%PROJECT_DIR:\=/%"
+set "WSL_PATH=%WSL_PATH:C:=/mnt/c%"
+set "WSL_PATH=%WSL_PATH:D:=/mnt/d%"
+set "WSL_PATH=%WSL_PATH:E:=/mnt/e%"
+
+:: Create safe session name (replace spaces with dashes)
+set "SESSION_NAME=%PROJECT_NAME: =-%"
+set "SESSION_NAME=%SESSION_NAME:_=-%"
+
 :: Clear screen for clean interface
 cls
 
 echo ========================================
-echo Claude Code Project Context Manager
+echo Claude Code - Persistent Session Manager
 echo ========================================
 echo Project: %PROJECT_NAME%
 echo Directory: %PROJECT_DIR%
+echo Session: claude-%SESSION_NAME%
 echo ========================================
 echo.
 
@@ -38,13 +49,14 @@ echo ^(Add your project-specific notes below - they will persist across sessions
 echo.
 echo ---
 echo.
-echo ## Session History
-echo This project maintains persistent context through this file.
-echo Each time you work on this project, reference this file first.
+echo ## Session Information
+echo This project uses tmux for TRUE conversation persistence.
+echo Your conversations continue exactly where you left off.
+echo This CLAUDE.md file provides additional project context.
 echo.
 echo ---
 echo Last Updated: %DATE% %TIME%
-echo Launcher Version: claude-launcher.bat v1.0
+echo Launcher Version: claude-launcher.bat v2.0 ^(with tmux persistence^)
 ) > "CLAUDE.md"
 
 :: Create or update claude.config for additional settings
@@ -70,19 +82,51 @@ echo Detecting Claude Code CLI installation...
 echo ========================================
 echo.
 
-:: Method 1: Check for globally installed claude-code command
+:: Method 1: Try Windows Terminal with tmux (best option for persistence)
+where wt.exe >nul 2>&1
+if %errorlevel%==0 (
+    where wsl.exe >nul 2>&1
+    if !errorlevel!==0 (
+        echo [✓] Found Windows Terminal and WSL
+        echo.
+        echo ========================================
+        echo LAUNCHING PERSISTENT CLAUDE SESSION
+        echo ========================================
+        echo.
+        echo Session: claude-%SESSION_NAME%
+        echo.
+        echo TMUX SESSION CONTROLS:
+        echo ^^^^^^^^^^^^^^^^^^^^^^
+        echo - Your conversation will persist across restarts
+        echo - To detach ^(keep running^): Press Ctrl+B, then D
+        echo - Session auto-resumes when you run this launcher again
+        echo.
+        echo Press any key to launch/resume Claude session...
+        pause >nul
+        
+        :: Launch Windows Terminal with tmux session
+        wt.exe new-tab --title "Claude: %PROJECT_NAME%" -- wsl.exe -d Ubuntu bash -c "cd '%WSL_PATH%' && tmux new-session -A -s 'claude-%SESSION_NAME%' 'claude code --resume || claude code -c || claude code; bash'"
+        goto :end
+    )
+)
+
+:: Method 2: Fallback to claude-code command (no tmux persistence)
 where claude-code >nul 2>&1
 if %errorlevel%==0 (
-    echo [✓] Found Claude Code CLI
+    echo [!] Windows Terminal or WSL not found
+    echo [✓] Found Claude Code CLI - using fallback mode
     echo.
     echo ========================================
-    echo LAUNCHING CLAUDE CODE CLI
+    echo LAUNCHING CLAUDE CODE ^(No Persistence^)
     echo ========================================
+    echo.
+    echo WARNING: Running without tmux - conversations won't persist!
+    echo To enable persistence, install Windows Terminal and WSL.
     echo.
     echo IMPORTANT FIRST STEP:
     echo ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     echo When Claude opens, type: "Read CLAUDE.md"
-    echo This loads your project's persistent context
+    echo This loads your project's context
     echo.
     echo Press any key to launch Claude Code CLI...
     pause >nul
@@ -91,50 +135,29 @@ if %errorlevel%==0 (
     goto :end
 )
 
-:: Method 2: Check for globally installed claude command
+:: Method 3: Check for globally installed claude command (no tmux)
 where claude >nul 2>&1
 if %errorlevel%==0 (
-    echo [✓] Found Claude CLI
+    echo [!] Windows Terminal not found
+    echo [✓] Found Claude CLI - using fallback mode
     echo.
     echo ========================================
-    echo LAUNCHING CLAUDE CLI
+    echo LAUNCHING CLAUDE ^(No Persistence^)
     echo ========================================
+    echo.
+    echo WARNING: Running without tmux - conversations won't persist!
+    echo To enable persistence, install Windows Terminal.
     echo.
     echo IMPORTANT FIRST STEP:
     echo ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     echo When Claude opens, type: "Read CLAUDE.md"
-    echo This loads your project's persistent context
+    echo This loads your project's context
     echo.
     echo Press any key to launch Claude CLI...
     pause >nul
     cd /d "%CD%"
     cmd /k claude
     goto :end
-)
-
-:: Method 3: Try WSL if available
-where wsl >nul 2>&1
-if %errorlevel%==0 (
-    echo [*] Checking WSL for Claude...
-    :: Try to run claude with full bash login that loads .bashrc
-    wsl -d Ubuntu -- bash -lic "which claude" >nul 2>&1
-    if %errorlevel%==0 (
-        echo [✓] Found Claude in WSL Ubuntu
-        echo.
-        echo ========================================
-        echo LAUNCHING CLAUDE VIA WSL
-        echo ========================================
-        echo.
-        echo IMPORTANT FIRST STEP:
-        echo ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        echo When Claude opens, type: "Read CLAUDE.md"
-        echo This loads your project's persistent context
-        echo.
-        echo Press any key to launch Claude...
-        pause >nul
-        wsl -d Ubuntu -- bash -lic "cd '/mnt/c/${PROJECT_DIR//C:\//}' && claude"
-        goto :end
-    )
 )
 
 :: Method 4: Try using npx if npm is available (without prompting)

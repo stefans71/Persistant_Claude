@@ -22,17 +22,19 @@ If you use this template, add this badge to your README:
 
 ## 🚀 WHAT IS THIS?
 
-A simple Windows template that helps you manage project context when using Claude Code. Creates a CLAUDE.md file in each project to help Claude remember project-specific information.
+A Windows template that provides TRUE conversation persistence for Claude Code using tmux sessions. Your conversations continue exactly where you left off - even mid-sentence - across system restarts, disconnections, and days or weeks later.
 
 
 ## ✨ WHAT THIS ACTUALLY DOES
 
 ---
 
-- **Creates CLAUDE.md files**: A context file for each project
+- **TRUE Conversation Persistence**: Uses tmux to maintain conversations across sessions
+- **Resume Mid-Sentence**: Pick up exactly where you left off, even after days
+- **Creates CLAUDE.md files**: Additional context file for each project
 - **One-File Solution**: Just run claude-launcher.bat
 - **Fully Automated**: Installs everything needed automatically
-- **Project Isolation**: Each project maintains its own persistent context
+- **Project Isolation**: Each project has its own tmux session with separate conversation history
 
 
 
@@ -60,7 +62,9 @@ This template contains a simple batch file that:
 
 ✅ **Windows 10/11**  
 ✅ **Anthropic Claude Subscription** (Pro or Team plan required)  
-✅ That's it! Everything else is automated!
+✅ **Windows Terminal** (for tmux persistence - optional but recommended)
+✅ **WSL Ubuntu** (for tmux persistence - optional but recommended)
+✅ Everything else is automated!
 
 ### 🎯 Fully Automated Installation:
 
@@ -117,9 +121,10 @@ When you run `claude-launcher.bat`, it automatically:
 ---
 
 1. **Run claude-launcher.bat** in your project folder
-2. **It creates CLAUDE.md** with project context automatically
-3. **It launches Claude Code CLI** in your project directory
-4. **Tell Claude to read CLAUDE.md** for persistent context
+2. **It creates/attaches to a tmux session** named after your project
+3. **Claude resumes your previous conversation** automatically with --resume flag
+4. **Detach anytime** with Ctrl+B, then D (conversation keeps running)
+5. **Resume later** by running claude-launcher.bat again
 
 
 ## 📝 PROJECT STRUCTURE
@@ -144,21 +149,25 @@ What gets created when you RUN claude-launcher.bat:
 ---
 
 1. **Run**: Execute `claude-launcher.bat` in your project
-2. **Context**: When Claude opens, type "Read CLAUDE.md"
-3. **Work**: Claude now has your project's persistent context!
+2. **Resume**: Claude automatically continues your previous conversation
+3. **Detach**: Press `Ctrl+B`, then `D` to leave session running
+4. **Return**: Run `claude-launcher.bat` again to resume exactly where you left off!
 
 
 ## 💡 PRO TIPS
 
 ---
 
-- Edit CLAUDE.md to add project-specific notes
-- The launcher tries multiple methods: npx, claude-code, claude, npm exec
-- Works with any Windows project folder
-- Conversations persist through system restarts
-- Each project folder becomes a persistent workspace
+- **Tmux Session Controls**:
+  - Detach (keep running): `Ctrl+B`, then `D`
+  - List sessions: `tmux list-sessions` (in WSL)
+  - Kill session: `tmux kill-session -t claude-[project-name]` (in WSL)
+- Edit CLAUDE.md to add project-specific notes (supplementary context)
+- TRUE persistence: Your actual conversation history is maintained by tmux
+- Conversations persist through system restarts (tmux + Claude's --resume flag)
+- Each project has its own isolated tmux session
+- Multiple projects can run simultaneously without interference
 - No API keys needed - uses your Claude Pro subscription
-- Claude is isolated to your project directory - won't accidentally read parent folders or follow imports outside
 
 
 ## 📝 RECENT UPDATES
@@ -166,10 +175,12 @@ What gets created when you RUN claude-launcher.bat:
 ---
 
 ### Latest Changes (August 15, 2025)
-- ✅ **NEW: Single-file solution** - `claude-launcher.bat` does everything
+- ✅ **RESTORED: TRUE conversation persistence via tmux**
+- ✅ **Resume conversations exactly where you left off** - even mid-sentence!
+- ✅ **Single-file solution** - `claude-launcher.bat` does everything
 - ✅ **FULLY AUTOMATED** - Automatically installs Node.js and Claude Code CLI if needed
-- ✅ Works with Windows-native Node.js OR WSL
-- ✅ Zero manual setup required - just run claude-launcher.bat!
+- ✅ Works with Windows Terminal + WSL for best experience
+- ✅ Fallback modes for systems without tmux support
 
 ## 🚀 ROADMAP
 
