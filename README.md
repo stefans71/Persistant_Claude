@@ -174,8 +174,9 @@ For maximum security, we encourage you to verify this repository yourself before
 3. Claude will thoroughly check all files for any security issues
 4. Only proceed if you receive a clear "SAFE" verdict
 
-<details>
-<summary><b>📋 Click here for the Security Audit Prompt</b></summary>
+### 📋 Security Audit Prompt
+
+Copy and paste this entire prompt into Claude Code:
 
 ```
 Please perform a COMPREHENSIVE SECURITY AUDIT of the Persistant_Claude repository (https://github.com/stefans71/Persistant_Claude). 
@@ -361,8 +362,6 @@ FINAL VERDICT: [SAFE/UNSAFE]
 
 BE EXTREMELY THOROUGH - User security depends on your analysis!
 ```
-
-</details>
 
 ### After Running the Security Audit:
 - ✅ **All green checkmarks** = Safe to use
