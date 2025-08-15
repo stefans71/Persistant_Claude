@@ -30,7 +30,7 @@
 ## I had Claude Code build this so I don't have to worry about Claude losing context for each of my projects. I hope it helps others with this same issue.
 
 ## ✅ Security Status
-**Repository verified safe** - [Click here to run your own security verification. takes you to the prompt to give to Claude to validate the security or scroll down to find it](#-security--verification)
+**Repository verified safe** - Scroll down for the complete security verification prompt to validate with Claude Code
 
 ## 📋 Requirements
 
@@ -160,7 +160,13 @@ Created to solve the problem of managing multiple Claude Code projects with pers
 
 ---
 
-## 🔍 Security & Verification
+<br>
+
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+
+**🔍 SECURITY & VERIFICATION**
+
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
 **Last developer verification:** August 15, 2025  
 **Status:** Clean - No issues found
