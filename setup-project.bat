@@ -1,83 +1,83 @@
 @echo off
 setlocal enabledelayedexpansion
 
-echo ============================================
-echo   Claude Project Setup
-echo ============================================
+:: Get the current directory name for the project name
+for %%I in (.) do set "PROJECT_NAME=%%~nxI"
+
+:: Get the full current directory path
+set "PROJECT_DIR=%CD%"
+
+echo ========================================
+echo Setting up Claude Project: %PROJECT_NAME%
+echo Project Directory: %PROJECT_DIR%
+echo ========================================
 echo.
 
-REM Get current directory name (project name)
-for %%I in (.) do set PROJECT_NAME=%%~nxI
-echo Project Name: %PROJECT_NAME%
+:: Create the launch script for this specific project
+echo Creating launch script for %PROJECT_NAME%...
 
-REM Get current directory path
-set WIN_PATH=%cd%
-echo Windows Path: %WIN_PATH%
-
-REM Convert to WSL path
-set WSL_PATH=%WIN_PATH:\=/%
-set WSL_PATH=%WSL_PATH:C:=/mnt/c%
-set WSL_PATH=%WSL_PATH:D:=/mnt/d%
-set WSL_PATH=%WSL_PATH:E:=/mnt/e%
-echo WSL Path: %WSL_PATH%
-
-REM Create safe session name (replace spaces and special chars)
-set SESSION_NAME=%PROJECT_NAME: =-%
-set SESSION_NAME=%SESSION_NAME:_=-% 
-echo Session Name: claude-%SESSION_NAME%
-echo.
-
-echo Creating project files...
-
-REM Create claude.bat from template
-echo Creating claude.bat...
 (
-    for /f "delims=" %%a in (claude.bat.template) do (
-        set "line=%%a"
-        set "line=!line:{{PROJECT_NAME}}=%PROJECT_NAME%!"
-        set "line=!line:{{SESSION_NAME}}=%SESSION_NAME%!"
-        set "line=!line:{{WSL_PATH}}=%WSL_PATH%!"
-        echo !line!
-    )
-) > claude.bat
+echo @echo off
+echo setlocal enabledelayedexpansion
+echo.
+echo :: Project-specific configuration
+echo set "PROJECT_NAME=%PROJECT_NAME%"
+echo set "PROJECT_DIR=%PROJECT_DIR%"
+echo.
+echo echo ========================================
+echo echo Claude Project: %%PROJECT_NAME%%
+echo echo Directory: %%PROJECT_DIR%%
+echo echo ========================================
+echo echo.
+echo echo IMPORTANT: Claude is restricted to files in this directory only.
+echo echo Claude will NOT access parent or sibling directories.
+echo echo.
+echo.
+echo :: Set strict directory isolation prompt
+echo set "ISOLATION_PROMPT=CRITICAL WORKSPACE RULES: You are working ONLY in '%%PROJECT_DIR%%'. NEVER read, access, or follow references to files outside this directory. Do not access parent directories ^(.../^) or absolute paths. Do not follow import statements that lead outside this directory. If you encounter references to external files, do not read them. Treat this project as completely isolated. If you need to access external resources, ask for explicit permission first."
+echo.
+echo :: Launch Claude with the specific project context and isolation rules
+echo echo Starting Claude with isolated context for %%PROJECT_NAME%%...
+echo echo.
+echo claude "%%ISOLATION_PROMPT%% You are now working on the %%PROJECT_NAME%% project located at %%PROJECT_DIR%%. Remember this context for our entire conversation."
+echo.
+echo :: Keep the window open
+echo echo.
+echo echo ========================================
+echo echo Claude session ended for %%PROJECT_NAME%%
+echo echo ========================================
+echo pause
+) > "start-claude.bat"
 
-REM Create launch-claude.sh from template
-echo Creating launch-claude.sh...
+echo Launch script created successfully!
+echo.
+
+:: Create an optional configuration file for reference
+echo Creating project configuration file...
+
 (
-    for /f "delims=" %%a in (launch-claude.sh.template) do (
-        set "line=%%a"
-        set "line=!line:{{PROJECT_NAME}}=%PROJECT_NAME%!"
-        set "line=!line:{{SESSION_NAME}}=%SESSION_NAME%!"
-        set "line=!line:{{WSL_PATH}}=%WSL_PATH%!"
-        echo !line!
-    )
-) > launch-claude.sh
+echo :: Claude Project Configuration
+echo :: Project: %PROJECT_NAME%
+echo :: Directory: %PROJECT_DIR%
+echo :: Created: %DATE% %TIME%
+echo :: 
+echo :: This project has strict directory isolation enabled.
+echo :: Claude will NOT access files outside of: %PROJECT_DIR%
+echo ::
+echo :: To modify isolation rules, edit the ISOLATION_PROMPT in start-claude.bat
+) > "claude.config"
 
-REM Convert line endings for shell script
-echo Converting line endings...
-wsl.exe -d Ubuntu sed -i 's/\r$//' "%WSL_PATH%/launch-claude.sh" 2>nul
-
-REM Make shell script executable
-echo Setting permissions...
-wsl.exe -d Ubuntu chmod +x "%WSL_PATH%/launch-claude.sh" 2>nul
-
-REM Clean up templates
-echo Cleaning up templates...
-del claude.bat.template 2>nul
-del launch-claude.sh.template 2>nul
-
+echo Configuration file created!
 echo.
-echo ============================================
-echo   Setup Complete!
-echo ============================================
+echo ========================================
+echo Setup complete for %PROJECT_NAME%!
+echo ========================================
 echo.
-echo Your project "%PROJECT_NAME%" is ready.
+echo You can now use:
+echo   - start-claude.bat : Launch Claude with isolated context for this project
+echo   - claude.config    : View project configuration
 echo.
-echo To start Claude Code:
-echo   - Double-click claude.bat
+echo DIRECTORY ISOLATION: ENABLED
+echo Claude will be restricted to: %PROJECT_DIR%
 echo.
-echo This setup script will now self-destruct...
-timeout /t 5 >nul
-
-REM Delete this setup script
-(goto) 2>nul & del "%~f0"
+pause

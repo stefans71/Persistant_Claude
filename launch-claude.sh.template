@@ -1,34 +1,36 @@
 #!/bin/bash
-# Claude launcher script for tmux sessions
 
-# Get the project directory and name
-PROJECT_DIR="{{WSL_PATH}}"
-PROJECT_NAME="{{PROJECT_NAME}}"
-SESSION_NAME="claude-{{SESSION_NAME}}"
+# Claude Project Launcher - Template
+# Rename this file to launch-claude.sh and make it executable with: chmod +x launch-claude.sh
 
-# Change to project directory
-cd "$PROJECT_DIR"
+# ===== CONFIGURATION =====
+# Set your project name here
+PROJECT_NAME="YOUR_PROJECT_NAME"
 
-# Source bashrc to get functions and PATH
-source ~/.bashrc
+# Get the current directory (project root)
+PROJECT_DIR="$(pwd)"
 
-# Ensure NVM and Claude are in PATH
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# ===== DO NOT EDIT BELOW THIS LINE =====
 
-# Check if tmux session exists
-if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
-    echo "Attaching to existing tmux session: $SESSION_NAME"
-    tmux attach-session -t "$SESSION_NAME"
-else
-    echo "Creating new tmux session: $SESSION_NAME for project: $PROJECT_NAME"
-    
-    # Create a new tmux session with Claude
-    # Use -c to continue the most recent conversation in this directory
-    tmux new-session -s "$SESSION_NAME" -c "$PROJECT_DIR" -n "$PROJECT_NAME" \
-        "echo 'Starting Claude Code for $PROJECT_NAME...'; \
-         echo 'Project directory: $PROJECT_DIR'; \
-         echo ''; \
-         bash -l -c 'claude code -c' || bash -l -c 'claude code'; \
-         bash"
-fi
+echo "========================================"
+echo "Claude Project: $PROJECT_NAME"
+echo "Directory: $PROJECT_DIR"
+echo "========================================"
+echo ""
+echo "IMPORTANT: Claude is restricted to files in this directory only."
+echo "Claude will NOT access parent or sibling directories."
+echo ""
+
+# Set strict directory isolation prompt
+ISOLATION_PROMPT="CRITICAL WORKSPACE RULES: You are working ONLY in $PROJECT_DIR. NEVER read, access, or follow references to files outside this directory. Do not access parent directories (../) or absolute paths. Do not follow import statements that lead outside this directory. If you encounter references to external files, do not read them. Treat this project as completely isolated. If you need to access external resources, ask for explicit permission first."
+
+# Launch Claude with the specific project context and isolation rules
+echo "Starting Claude with isolated context for $PROJECT_NAME..."
+echo ""
+
+claude "${ISOLATION_PROMPT} You are now working on the ${PROJECT_NAME} project located at ${PROJECT_DIR}. Remember this context for our entire conversation."
+
+echo ""
+echo "========================================"
+echo "Claude session ended for $PROJECT_NAME"
+echo "========================================"

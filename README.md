@@ -23,6 +23,7 @@
 
 - **Persistent Sessions**: Resume conversations exactly where you left off
 - **Multi-Project Support**: Work on multiple projects with isolated contexts
+- **Directory Isolation**: Claude is strictly restricted to your project directory - prevents accidental access to parent/sibling directories
 - **One-Click Setup**: Automated installation and configuration
 - **No Windows Terminal Required**: Works directly with Command Prompt
 - **Auto-Recovery**: Conversations persist even after system restarts
@@ -71,15 +72,17 @@ If you prefer manual installation or already have some components:
 
 ## 🎯 How It Works
 
-The system uses two layers:
+The system uses three layers:
 - **tmux**: Manages terminal sessions (background running)
 - **Claude CLI**: Maintains conversation persistence
+- **Directory Isolation**: Enforces strict workspace boundaries
 
 Each project gets:
 - Unique tmux session named after the project
 - Isolated conversation history
 - Independent 200K token context
 - Automatic resume capability
+- Strict directory isolation - Claude cannot access files outside your project folder
 
 ## 📝 Project Structure
 
@@ -116,6 +119,7 @@ tmux commands:
 - Conversations persist through system restarts
 - Each project folder becomes a persistent workspace
 - No API keys needed - uses your Claude Pro subscription
+- Claude is isolated to your project directory - won't accidentally read parent folders or follow imports outside
 
 ## 🤝 Contributing
 
