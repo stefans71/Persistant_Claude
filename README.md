@@ -58,8 +58,17 @@ A simple Windows template that helps you manage project context when using Claud
 ### You'll Need:
 
 ✅ **Windows 10/11**  
-✅ **Claude Code CLI** (Command-line interface version)  
-✅ That's it!
+✅ That's it! Everything else is automated!
+
+### 🎯 Fully Automated Installation:
+
+When you run `start-claude.bat`, it automatically:
+
+1. **Checks for Node.js** - If not found, downloads and installs it for you
+2. **Installs Claude Code CLI** - Automatically runs `npm install -g @anthropic-ai/claude-code`
+3. **Launches Claude Code** - Opens the CLI in your project directory
+
+**No manual installation needed!** Just run the batch file and follow any prompts.
 
 
 ## 🚀 QUICK START
@@ -81,15 +90,22 @@ A simple Windows template that helps you manage project context when using Claud
 ---
 
 ### 🆕 For New Projects
-1. Copy **setup-project.bat** to your new project folder
-2. Double-click **setup-project.bat**
-3. Double-click **start-claude.bat** to launch Claude Code CLI
+1. Download/clone this template repository
+2. Copy the entire folder to your desired location
+3. Rename the folder to your project name
+4. Run **setup-project.bat** (updates all files with your project name)
+5. Run **start-claude.bat** - it will:
+   - Auto-install Node.js if needed
+   - Auto-install Claude Code CLI if needed
+   - Launch Claude Code in your project
 
 
 ### 📂 For Existing Projects
-1. Copy **setup-project.bat** to your project
-2. Run **setup-project.bat**
-3. Use **start-claude.bat** to launch Claude Code CLI
+1. Copy **setup-project.bat** from this template to your existing project
+2. Run **setup-project.bat** (creates CLAUDE.md and start-claude.bat)
+3. Run **start-claude.bat** - it handles all installations automatically
+
+**First time users:** The automated installer will download Node.js (~30MB) and Claude Code CLI. This only happens once!
 
 
 ## 🎯 HOW IT WORKS
@@ -135,7 +151,7 @@ After running setup-project.bat:
 ---
 
 - Edit CLAUDE.md to add project-specific notes
-- The launcher starts Claude Code CLI (`claude-code` command)
+- The launcher tries multiple methods: npx, claude-code, claude, npm exec
 - Works with any Windows project folder
 - Conversations persist through system restarts
 - Each project folder becomes a persistent workspace
@@ -149,8 +165,9 @@ After running setup-project.bat:
 
 ### Latest Changes (August 15, 2025)
 - ✅ Fixed start-claude.bat to properly launch Claude Code CLI instead of desktop app
-- ✅ Now correctly uses `claude-code` command with fallback to `claude`
-- ✅ Updated installation instructions for CLI version
+- ✅ Removed WSL dependency - now works with Windows-native Node.js
+- ✅ **FULLY AUTOMATED** - Automatically installs Node.js and Claude Code CLI if needed
+- ✅ Zero manual setup required - just run the batch files!
 
 ## 🚀 ROADMAP
 
@@ -195,7 +212,7 @@ Created to solve the problem of managing multiple Claude Code projects with pers
 
 ---
 
-**Note**: Works with Claude Code (free or pro). No complex setup required!
+**Note**: Works with Claude Code CLI. Install Node.js for Windows, then run `npm install -g @anthropic-ai/claude-code` or use npx!
 
 ---
 
@@ -309,10 +326,10 @@ For complete security, also use proper tools like antivirus scanners, sandboxes,
 - Character arrays: [char[]](104,101,108,108,111)
 
 ## SPECIFIC FILE VERIFICATION:
-1. INSTALL-PREREQUISITES.bat:
-   - Verify it ONLY installs: WSL, Ubuntu, Node.js, Claude CLI, tmux
-   - Confirm all URLs are official (Microsoft, Ubuntu, NPM)
-   - Check for any hidden commands between legitimate ones
+1. setup-project.bat:
+   - Creates CLAUDE.md context file
+   - Creates start-claude.bat launcher
+   - No system modifications or installations
    
 2. All .sh scripts:
    - Verify no access outside project directory
