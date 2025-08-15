@@ -1,5 +1,32 @@
 # Persistant Claude Code
 
+![Persistent Claude Banner](./PERSISTANT_CLAUDE_CODE.png)
+
+## 📢 Share This Project
+
+**Repository:** `https://github.com/stefans71/Persistent_Claude`
+
+## 📌 Add This Badge
+### If you use this template, add this badge to your README:
+
+[![Built with Persistent Claude](https://img.shields.io/badge/Built%20with-Persistent%20Claude-orange)](https://github.com/stefans71/Persistent_Claude)
+
+
+## 🚀 Persistent Claude Project Manager
+
+### A Windows batch template that provides persistent Claude Code sessions for multiple projects simultaneously. Each project maintains its own conversation history and context.
+
+## ✨ Features
+
+- **Persistent Sessions**: Resume conversations exactly where you left off
+- **Multi-Project Support**: Work on multiple projects with isolated contexts
+- **Directory Isolation**: Claude is strictly restricted to your project directory - prevents accidental access to parent/sibling directories
+- **One-Click Setup**: Automated installation and configuration
+- **No Windows Terminal Required**: Works directly with Command Prompt
+- **Auto-Recovery**: Conversations persist even after system restarts
+- **200K Token Context**: Full Claude context window per project
+
+
 ## I had Claude Code build this so I don't have to worry about Claude losing context for each of my projects. I hope it helps others with this same issue.
 
 ## 🔍 Security & Verification
@@ -112,31 +139,6 @@ BE EXTREMELY THOROUGH - User security depends on your analysis!
 *We encourage this practice for ANY repository you download from the internet!*
 
 
-![Persistent Claude Banner](./PERSISTANT_CLAUDE_CODE.png)
-
-## 📢 Share This Project
-
-**Repository:** `https://github.com/stefans71/Persistent_Claude`
-
-## 📌 Add This Badge
-### If you use this template, add this badge to your README:
-
-[![Built with Persistent Claude](https://img.shields.io/badge/Built%20with-Persistent%20Claude-orange)](https://github.com/stefans71/Persistent_Claude)
-
-
-## 🚀 Persistent Claude Project Manager
-
-### A Windows batch template that provides persistent Claude Code sessions for multiple projects simultaneously. Each project maintains its own conversation history and context.
-
-## ✨ Features
-
-- **Persistent Sessions**: Resume conversations exactly where you left off
-- **Multi-Project Support**: Work on multiple projects with isolated contexts
-- **Directory Isolation**: Claude is strictly restricted to your project directory - prevents accidental access to parent/sibling directories
-- **One-Click Setup**: Automated installation and configuration
-- **No Windows Terminal Required**: Works directly with Command Prompt
-- **Auto-Recovery**: Conversations persist even after system restarts
-- **200K Token Context**: Full Claude context window per project
 
 ## 📋 Requirements
 
