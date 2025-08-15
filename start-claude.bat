@@ -1,30 +1,46 @@
 @echo off
-setlocal enabledelayedexpansion
-
-:: Project-specific configuration
-set "PROJECT_NAME=Project_Template---Copy"
-set "PROJECT_DIR=C:\Users\Scott\Desktop\Sofware_Dev\Project_Template---Copy"
-
 echo ========================================
-echo Claude Project: %PROJECT_NAME%
-echo Directory: %PROJECT_DIR%
+echo Launching Claude Code for: Project_Template---Copy
 echo ========================================
 echo.
-echo IMPORTANT: Claude is restricted to files in this directory only.
-echo Claude will NOT access parent or sibling directories.
+echo Opening project: %CD%
 echo.
 
-:: Set strict directory isolation prompt
-set "ISOLATION_PROMPT=CRITICAL WORKSPACE RULES: You are working ONLY in '%PROJECT_DIR%'. NEVER read, access, or follow references to files outside this directory. Do not access parent directories ^(.../^) or absolute paths. Do not follow import statements that lead outside this directory. If you encounter references to external files, do not read them. Treat this project as completely isolated. If you need to access external resources, ask for explicit permission first."
+:: Try multiple methods to launch Claude Code
+:: Method 1: Try AnthropicClaude installation path
+if exist "C:\Users\%USERNAME%\AppData\Local\AnthropicClaude\claude.exe" (
+    start "" "C:\Users\%USERNAME%\AppData\Local\AnthropicClaude\claude.exe" "%CD%"
+    exit
+)
 
-:: Launch Claude with the specific project context and isolation rules
-echo Starting Claude with isolated context for %PROJECT_NAME%...
-echo.
-claude "%ISOLATION_PROMPT% You are now working on the %PROJECT_NAME% project located at %PROJECT_DIR%. Remember this context for our entire conversation."
+:: Method 2: Try Program Files
+if exist "C:\Program Files\Claude\Claude.exe" (
+    start "" "C:\Program Files\Claude\Claude.exe" "%CD%"
+    exit
+)
 
-:: Keep the window open
+:: Method 3: Try launching via protocol handler
+start claude://open?path="%CD%"
+timeout /t 2 /nobreak >nul 2>&1
+
+:: Method 4: Try via system PATH
+where claude >nul 2>&1
+if %errorlevel%==0 (
+    claude "%CD%"
+    exit
+)
+
+:: If Claude Code not found, show instructions
 echo.
 echo ========================================
-echo Claude session ended for %PROJECT_NAME%
+echo Claude Code doesn't appear to be installed
 echo ========================================
+echo.
+echo Please install Claude Code from:
+echo https://claude.ai/download
+echo.
+echo Once installed, run this file again.
+echo.
+echo Your project has a CLAUDE.md file ready for context.
+echo.
 pause

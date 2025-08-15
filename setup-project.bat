@@ -45,20 +45,48 @@ echo Creating start-claude.bat...
 (
 echo @echo off
 echo echo ========================================
-echo echo Claude Code Context: %PROJECT_NAME%
+echo echo Launching Claude Code for: %PROJECT_NAME%
 echo echo ========================================
 echo echo.
-echo echo Directory: %CD%
+echo echo Opening project: %%CD%%
 echo echo.
-echo echo This project has a CLAUDE.md file with context.
+echo.
+echo :: Try multiple methods to launch Claude Code
+echo :: Method 1: Try AnthropicClaude installation path
+echo if exist "C:\Users\%%USERNAME%%\AppData\Local\AnthropicClaude\claude.exe" ^(
+echo     start "" "C:\Users\%%USERNAME%%\AppData\Local\AnthropicClaude\claude.exe" "%%CD%%"
+echo     exit
+echo ^)
+echo.
+echo :: Method 2: Try Program Files
+echo if exist "C:\Program Files\Claude\Claude.exe" ^(
+echo     start "" "C:\Program Files\Claude\Claude.exe" "%%CD%%"
+echo     exit
+echo ^)
+echo.
+echo :: Method 3: Try launching via protocol handler
+echo start claude://open?path="%%CD%%"
+echo timeout /t 2 /nobreak ^>nul 2^>^&1
+echo.
+echo :: Method 4: Try via system PATH
+echo where claude ^>nul 2^>^&1
+echo if %%errorlevel%%==0 ^(
+echo     claude "%%CD%%"
+echo     exit
+echo ^)
+echo.
+echo :: If Claude Code not found, show instructions
 echo echo.
-echo echo To use with Claude Code:
-echo echo 1. Make sure Claude Code is already running
-echo echo 2. Open this folder in Claude Code
-echo echo 3. Say: "Read the CLAUDE.md file for context"
+echo echo ========================================
+echo echo Claude Code doesn't appear to be installed!
+echo echo ========================================
 echo echo.
-echo echo If you need to install Claude Code:
+echo echo Please install Claude Code from:
 echo echo https://claude.ai/download
+echo echo.
+echo echo Once installed, run this file again.
+echo echo.
+echo echo Your project has a CLAUDE.md file ready for context.
 echo echo.
 echo pause
 ) > "start-claude.bat"
