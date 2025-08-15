@@ -2,6 +2,16 @@ Persistant Claude Code
 
 ![Persistent Claude Banner](./PERSISTANT_CLAUDE_CODE.png)
 
+## 📢 Share This Project
+
+**Repository:** `https://github.com/stefans71/Persistent_Claude`
+
+## 📌 Add This Badge
+If you use this template, add this badge to your README:
+
+[![Built with Persistent Claude](https://img.shields.io/badge/Built%20with-Persistent%20Claude-orange)](https://github.com/stefans71/Persistent_Claude)
+
+
 # 🚀 Persistent Claude Project Manager
 
 A Windows batch template that provides persistent Claude Code sessions for multiple projects simultaneously. Each project maintains its own conversation history and context.
