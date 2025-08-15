@@ -8,76 +8,72 @@ for %%I in (.) do set "PROJECT_NAME=%%~nxI"
 set "PROJECT_DIR=%CD%"
 
 echo ========================================
-echo Setting up Claude Project: %PROJECT_NAME%
-echo Project Directory: %PROJECT_DIR%
+echo Setting up Claude Context for: %PROJECT_NAME%
+echo Directory: %PROJECT_DIR%
 echo ========================================
 echo.
 
-:: Create the launch script for this specific project
-echo Creating launch script for %PROJECT_NAME%...
+:: Create CLAUDE.md file for context
+echo Creating CLAUDE.md context file...
+(
+echo # Claude Code Context for %PROJECT_NAME%
+echo.
+echo ## Project Directory
+echo %PROJECT_DIR%
+echo.
+echo ## Instructions for Claude Code
+echo When working on this project, please:
+echo - Stay within this directory: %PROJECT_DIR%
+echo - Remember this is the %PROJECT_NAME% project
+echo - Check this file for any project-specific context
+echo.
+echo ## Project Notes
+echo ^(Add your project-specific notes here^)
+echo.
+echo ## How to Use This
+echo 1. Open this folder in Claude Code
+echo 2. Claude will see this CLAUDE.md file
+echo 3. Reference this file to maintain context
+echo 4. Add project notes as needed
+echo.
+echo ---
+echo Created: %DATE% %TIME%
+) > "CLAUDE.md"
 
+:: Create start-claude.bat
+echo Creating start-claude.bat...
 (
 echo @echo off
-echo setlocal enabledelayedexpansion
-echo.
-echo :: Project-specific configuration
-echo set "PROJECT_NAME=%PROJECT_NAME%"
-echo set "PROJECT_DIR=%PROJECT_DIR%"
-echo.
 echo echo ========================================
-echo echo Claude Project: %%PROJECT_NAME%%
-echo echo Directory: %%PROJECT_DIR%%
+echo echo Claude Code Context: %PROJECT_NAME%
 echo echo ========================================
 echo echo.
-echo echo IMPORTANT: Claude is restricted to files in this directory only.
-echo echo Claude will NOT access parent or sibling directories.
+echo echo Directory: %CD%
 echo echo.
-echo.
-echo :: Set strict directory isolation prompt
-echo set "ISOLATION_PROMPT=CRITICAL WORKSPACE RULES: You are working ONLY in '%%PROJECT_DIR%%'. NEVER read, access, or follow references to files outside this directory. Do not access parent directories ^(.../^) or absolute paths. Do not follow import statements that lead outside this directory. If you encounter references to external files, do not read them. Treat this project as completely isolated. If you need to access external resources, ask for explicit permission first."
-echo.
-echo :: Launch Claude with the specific project context and isolation rules
-echo echo Starting Claude with isolated context for %%PROJECT_NAME%%...
+echo echo This project has a CLAUDE.md file with context.
 echo echo.
-echo claude "%%ISOLATION_PROMPT%% You are now working on the %%PROJECT_NAME%% project located at %%PROJECT_DIR%%. Remember this context for our entire conversation."
-echo.
-echo :: Keep the window open
+echo echo To use with Claude Code:
+echo echo 1. Make sure Claude Code is already running
+echo echo 2. Open this folder in Claude Code
+echo echo 3. Say: "Read the CLAUDE.md file for context"
 echo echo.
-echo echo ========================================
-echo echo Claude session ended for %%PROJECT_NAME%%
-echo echo ========================================
+echo echo If you need to install Claude Code:
+echo echo https://claude.ai/download
+echo echo.
 echo pause
 ) > "start-claude.bat"
 
-echo Launch script created successfully!
-echo.
-
-:: Create an optional configuration file for reference
-echo Creating project configuration file...
-
-(
-echo :: Claude Project Configuration
-echo :: Project: %PROJECT_NAME%
-echo :: Directory: %PROJECT_DIR%
-echo :: Created: %DATE% %TIME%
-echo :: 
-echo :: This project has strict directory isolation enabled.
-echo :: Claude will NOT access files outside of: %PROJECT_DIR%
-echo ::
-echo :: To modify isolation rules, edit the ISOLATION_PROMPT in start-claude.bat
-) > "claude.config"
-
-echo Configuration file created!
-echo.
 echo ========================================
-echo Setup complete for %PROJECT_NAME%!
+echo Setup Complete!
 echo ========================================
 echo.
-echo You can now use:
-echo   - start-claude.bat : Launch Claude with isolated context for this project
-echo   - claude.config    : View project configuration
+echo Created:
+echo - CLAUDE.md (context file for Claude)
+echo - start-claude.bat (instructions)
 echo.
-echo DIRECTORY ISOLATION: ENABLED
-echo Claude will be restricted to: %PROJECT_DIR%
+echo How to use:
+echo 1. Open Claude Code (the app you already have)
+echo 2. Open this project folder
+echo 3. Tell Claude to read CLAUDE.md for context
 echo.
 pause

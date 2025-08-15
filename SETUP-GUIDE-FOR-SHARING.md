@@ -1,96 +1,42 @@
-# Claude Code Project Template - Setup Guide
+# Claude Code Project Context Manager - Setup Guide
 
-## Prerequisites (One-Time Setup)
+## What This Does
 
-Before using this template, you need:
+Creates a simple CLAUDE.md file in each project folder to help Claude Code remember project-specific context.
 
-### 1. Install WSL2 with Ubuntu
-```powershell
-# Run in PowerShell as Administrator
-wsl --install -d Ubuntu
-```
-- Restart computer after installation
-- Set up a username/password when Ubuntu first launches
+## Quick Setup (2 minutes)
 
-### 2. Install Node.js in WSL Ubuntu
-```bash
-# Open Ubuntu terminal and run:
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-source ~/.bashrc
-nvm install --lts
-nvm use --lts
-```
+1. **Download this repository**
+2. **Copy to your project folder**
+3. **Run `setup-project.bat`**
+4. **Open in Claude Code**
+5. **Tell Claude: "Read the CLAUDE.md file"**
 
-### 3. Install Claude CLI
-```bash
-# In Ubuntu terminal:
-npm install -g @anthropic/claude-cli
-```
+That's it! No complex installation needed.
 
-### 4. Install tmux
-```bash
-# In Ubuntu terminal:
-sudo apt update
-sudo apt install tmux
-```
+## How It Works
 
-### 5. Authenticate Claude
-```bash
-# In Ubuntu terminal:
-claude login
-```
-Follow the prompts to authenticate with your Anthropic account.
+- `setup-project.bat` creates a CLAUDE.md file
+- This file contains project information
+- Claude Code can read this file to understand your project
+- Add your own notes to CLAUDE.md as needed
 
-## Using the Template
+## Requirements
 
-Once prerequisites are installed:
+- Windows 10/11
+- Claude Code (the app or web version)
+- Nothing else!
 
-1. **Copy the template folder** to any location on your Windows machine
-2. **Rename the folder** to your project name
-3. **Double-click `setup-project.bat`** - this configures everything
-4. **Double-click `claude.bat`** - starts Claude Code
+## Troubleshooting
 
-## Verification Commands
+**"Claude doesn't see my project context"**
+- Make sure you opened the correct folder in Claude Code
+- Tell Claude explicitly: "Read the CLAUDE.md file in this directory"
 
-To check if everything is installed:
+**"I want to update the context"**
+- Just edit the CLAUDE.md file directly
+- Add your project notes, TODOs, or important information
 
-```powershell
-# In Windows Command Prompt:
-wsl -l -v                    # Should show Ubuntu
-wsl -d Ubuntu which claude   # Should show /usr/local/bin/claude or similar
-wsl -d Ubuntu which tmux     # Should show /usr/bin/tmux
-```
+## That's All!
 
-## Common Issues
-
-**"WSL 2 requires an update to its kernel component"**
-- Download and install: https://aka.ms/wsl2kernel
-
-**"Ubuntu not found"**
-- Make sure to use exactly "Ubuntu" in commands, not "Ubuntu-20.04" or other variants
-- Or modify the .bat files to match your WSL distribution name
-
-**Performance on Windows 10**
-- WSL2 works best on Windows 10 version 2004+ or Windows 11
-- Enable virtualization in BIOS if WSL2 is slow
-
-## Sharing This Template
-
-To share with others:
-1. Zip the entire template folder
-2. Send them this SETUP-GUIDE-FOR-SHARING.md file
-3. They follow the prerequisites, then use the template
-
-## What This Template Does
-
-- Creates isolated Claude Code sessions for each project
-- Maintains conversation history per project
-- Allows multiple projects to run simultaneously
-- Works without Windows Terminal dependency
-- Automatically configures all paths and settings
-
-## Support
-
-- Claude CLI docs: https://docs.anthropic.com/en/docs/claude-cli
-- WSL docs: https://docs.microsoft.com/en-us/windows/wsl/
-- tmux cheatsheet: https://tmuxcheatsheet.com/
+No WSL, no Ubuntu, no Node.js, no complex setup. Just a simple context file that works.

@@ -1,6 +1,6 @@
-# 🔥 Persistant Claude Code 🔥
+# Claude Code Project Context Manager
 
-### Never Lose Your Claude Context Again!
+### Simple Context Management for Multiple Projects
 
 ![Persistent Claude Banner](./PERSISTANT_CLAUDE_CODE.png)
 
@@ -22,22 +22,17 @@ If you use this template, add this badge to your README:
 
 ## 🚀 WHAT IS THIS?
 
-A Windows batch template that provides persistent Claude Code sessions for multiple projects simultaneously.
-
-Each project maintains its own conversation history and context. Work on multiple projects without losing your place!
+A simple Windows template that helps you manage project context when using Claude Code. Creates a CLAUDE.md file in each project to help Claude remember project-specific information.
 
 
-## ✨ KEY FEATURES
+## ✨ WHAT THIS ACTUALLY DOES
 
 ---
 
-- **Persistent Sessions**: Resume conversations exactly where you left off
-- **Multi-Project Support**: Work on multiple projects with isolated contexts
-- **Directory Isolation**: Claude is strictly restricted to your project directory - prevents accidental access to parent/sibling directories
-- **One-Click Setup**: Automated installation and configuration
-- **No Windows Terminal Required**: Works directly with Command Prompt
-- **Auto-Recovery**: Conversations persist even after system restarts
-- **200K Token Context**: Full Claude context window per project
+- **Creates CLAUDE.md files**: A context file for each project
+- **Simple Setup**: Just run setup-project.bat
+- **No Complex Installation**: Works with your existing Claude Code
+- **Project Organization**: Helps Claude understand which project you're working on
 
 
 
@@ -47,11 +42,11 @@ Each project maintains its own conversation history and context. Work on multipl
 
 ## ✅ SECURITY STATUS
 
-### **🛡️ THIS REPOSITORY IS 100% SAFE**
+### **⚠️ Security Notice**
 
-**✔️ Verification Status:** PASSED ALL SECURITY CHECKS  
-**Last Audit:** August 15, 2025  
-**Result:** NO malicious code, NO dangers, NO security issues  
+**Static Analysis:** No obvious malicious patterns found  
+**Last Review:** August 15, 2025  
+**Important:** This is based on static code review only - NOT a complete security guarantee  
 
 👉 See the [full audit results](#-actual-audit-results-for-this-repository) below or run your own verification with Claude Code
 
@@ -63,31 +58,22 @@ Each project maintains its own conversation history and context. Work on multipl
 ### You'll Need:
 
 ✅ **Windows 10/11**  
-✅ **Claude Pro subscription** ($20/month or Pro Plan)  
-✅ **No API key needed** - uses browser authentication
+✅ **Claude Code** (Desktop app or web version)  
+✅ That's it!
 
 
 ## 🚀 QUICK START
 
 ---
 
-### 🔹 Option 1: First-Time Setup (Automated)
+### Simple Setup:
 ```batch
 1. Download/clone this repository
-2. Right-click INSTALL-PREREQUISITES.bat → Run as administrator
-3. Follow prompts to install WSL, Ubuntu, Node.js, Claude CLI
-4. Open Ubuntu from Start Menu and run: claude login
-5. Copy template to create new projects
+2. Copy the folder to your project
+3. Run setup-project.bat
+4. Open the project in Claude Code
+5. Tell Claude to read CLAUDE.md
 ```
-
-
-### 🔹 Option 2: Manual Prerequisites
-If you prefer manual installation or already have some components:
-- Windows 10/11 with WSL2
-- Ubuntu for WSL: **wsl --install -d Ubuntu**
-- Node.js in Ubuntu (via NVM recommended)
-- Claude CLI: **npm install -g @anthropic/claude-cli**
-- tmux: **sudo apt install tmux**
 
 
 ## 📁 HOW TO USE
@@ -114,17 +100,10 @@ If you prefer manual installation or already have some components:
 
 ---
 
-The system uses three layers:
-- **tmux**: Manages terminal sessions (background running)
-- **Claude CLI**: Maintains conversation persistence
-- **Directory Isolation**: Enforces strict workspace boundaries
-
-Each project gets:
-- Unique tmux session named after the project
-- Isolated conversation history
-- Independent 200K token context
-- Automatic resume capability
-- Strict directory isolation - Claude cannot access files outside your project folder
+1. **Run setup-project.bat** in your project folder
+2. **It creates CLAUDE.md** with project context
+3. **Open in Claude Code** and reference the file
+4. **Claude remembers** your project details
 
 
 ## 📝 PROJECT STRUCTURE
@@ -145,27 +124,14 @@ claude-project-manager/
 ```
 
 
-## 🔧 COMMANDS
+## 🔧 HOW TO USE
 
 ---
 
-### Inside Claude Sessions:
-
-| Command | Description |
-|---------|-------------|
-| **/context** | View context usage |
-| **/clear** | Clear context and start fresh |
-| **/help** | See all available commands |
-| **exit** | Exit Claude |
-
-
-### tmux Commands:
-
-| Command | Description |
-|---------|-------------|
-| **Ctrl+B, D** | Detach (keep running in background) |
-| **tmux list-sessions** | List all sessions |
-| **tmux attach -t claude-[project]** | Reattach to session |
+1. **Setup**: Run `setup-project.bat` in your project
+2. **Open**: Open the folder in Claude Code
+3. **Context**: Say "Read the CLAUDE.md file for project context"
+4. **Work**: Claude now knows about your project!
 
 
 ## 💡 PRO TIPS
@@ -223,7 +189,7 @@ Created to solve the problem of managing multiple Claude Code projects with pers
 
 ---
 
-**Note**: Requires a Claude Pro subscription ($20/month). The Claude CLI authenticates through your browser - no API keys needed. Visit [Claude.ai](https://claude.ai) to subscribe.
+**Note**: Works with Claude Code (free or pro). No complex setup required!
 
 ---
 
@@ -251,12 +217,17 @@ For maximum security, we encourage you to verify this repository yourself before
 Copy and paste this entire prompt into Claude Code:
 
 ```
-Please perform a COMPREHENSIVE SECURITY AUDIT of the Persistant_Claude repository (https://github.com/stefans71/Persistant_Claude). 
+Please perform a static code review of the Persistant_Claude repository (https://github.com/stefans71/Persistant_Claude). 
 
-Repository to audit: https://github.com/stefans71/Persistant_Claude
-Current directory: Scan ALL files in the directory where this README.md is located
+**IMPORTANT LIMITATIONS:** This is a static analysis only. I cannot:
+- Execute code to detect runtime behaviors
+- Guarantee complete safety
+- Replace proper security tools
 
-Use all available tools (Read, Grep, LS, etc.) to thoroughly examine EVERY file for malicious code, security vulnerabilities, and privacy risks.
+If using Claude Code: Use available tools (Read, Grep, LS) to examine files.
+If using Claude.ai: Review visible source code only.
+
+For complete security, also use proper tools like antivirus scanners, sandboxes, and test in isolated environments.
 
 ## SYSTEM SECURITY CHECKS:
 1. Registry modifications beyond documented WSL installation
@@ -405,7 +376,7 @@ Use these symbols for each category:
 - ⚠️ = Warning/Note (not dangerous but worth mentioning)  
 - 🚫 = DANGER/MALICIOUS CODE FOUND
 
-**⚠️ IMPORTANT: This repository HAS BEEN VERIFIED SAFE! The format below is just an EXAMPLE of what the audit output looks like.**
+**⚠️ DISCLAIMER: The review below is based on static code analysis only. For complete security verification, use proper security tools and isolated test environments.**
 
 **EXAMPLE FORMAT ONLY** (This is NOT the actual result - see below for real results):
 ```
@@ -423,22 +394,24 @@ SECURITY AUDIT RESULTS - [Repository Name]
 FINAL VERDICT: [SAFE/UNSAFE]
 ```
 
-### ✅ **ACTUAL AUDIT RESULTS FOR THIS REPOSITORY:**
+### **STATIC CODE REVIEW RESULTS:**
 
 ```
-SECURITY AUDIT RESULTS - Persistant_Claude
+STATIC ANALYSIS - Persistant_Claude
 Repository: https://github.com/stefans71/Persistant_Claude
 =========================================
-✅ System Security: PASSED - No privilege escalation or modifications
-✅ Network Security: PASSED - All connections to legitimate sources only  
-✅ File Integrity: PASSED - All scripts perform only documented functions
-✅ Privacy: PASSED - No data collection or telemetry
-✅ Installation Sources: PASSED - Microsoft, Ubuntu, NPM official repos only
+✅ No obvious malicious patterns detected in visible code
+✅ Installation URLs point to official sources (Microsoft, Ubuntu, NPM)
+✅ No suspicious obfuscation found in scripts
+✅ No obvious data exfiltration attempts visible
 
-⚠️ Notes: None
-🚫 Dangers: NONE FOUND - Repository is completely SAFE
+⚠️ LIMITATIONS OF THIS REVIEW:
+- Cannot detect runtime behaviors
+- Cannot analyze compiled code execution
+- Cannot guarantee absence of all security issues
+- Based on static text analysis only
 
-FINAL VERDICT: ✅ SAFE TO USE
+RECOMMENDATION: Review code yourself and test in isolated environment
 ```
 
 ## FINAL REQUIREMENTS:
