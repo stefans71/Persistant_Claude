@@ -69,9 +69,9 @@ A simple Windows template that helps you manage project context when using Claud
 ### Simple Setup:
 ```batch
 1. Download/clone this repository
-2. Copy the folder to your project
+2. Copy setup-project.bat to your project
 3. Run setup-project.bat
-4. Open the project in Claude Code
+4. Click start-claude.bat to launch Claude Code
 5. Tell Claude to read CLAUDE.md
 ```
 
@@ -81,19 +81,15 @@ A simple Windows template that helps you manage project context when using Claud
 ---
 
 ### 🆕 For New Projects
-1. Copy the entire template folder
-2. Rename to your project name
-3. Double-click **setup-project.bat**
-4. Double-click **claude.bat** to start
+1. Copy **setup-project.bat** to your new project folder
+2. Double-click **setup-project.bat**
+3. Double-click **start-claude.bat** to launch Claude Code
 
 
 ### 📂 For Existing Projects
-1. Copy these files to your project:
-   - **setup-project.bat**
-   - **claude.bat.template**
-   - **launch-claude.sh.template**
+1. Copy **setup-project.bat** to your project
 2. Run **setup-project.bat**
-3. Use **claude.bat** to start Claude
+3. Use **start-claude.bat** to launch Claude Code
 
 
 ## 🎯 HOW IT WORKS
@@ -102,8 +98,9 @@ A simple Windows template that helps you manage project context when using Claud
 
 1. **Run setup-project.bat** in your project folder
 2. **It creates CLAUDE.md** with project context
-3. **Open in Claude Code** and reference the file
-4. **Claude remembers** your project details
+3. **It creates start-claude.bat** to launch Claude Code
+4. **Click start-claude.bat** and Claude Code opens with your project
+5. **Tell Claude to read CLAUDE.md** for context
 
 
 ## 📝 PROJECT STRUCTURE
@@ -111,16 +108,15 @@ A simple Windows template that helps you manage project context when using Claud
 ---
 
 ```
-claude-project-manager/
-├── INSTALL-PREREQUISITES.bat    # One-time setup script
-├── setup-project.bat            # Project configuration
-├── claude.bat.template          # Session launcher template
-├── launch-claude.sh.template    # WSL script template
-├── start-claude.bat             # Alternative launcher
-├── start-claude.sh              # Alternative WSL script
-├── README.md                    # Detailed documentation
-├── SETUP-GUIDE-FOR-SHARING.md  # Sharing instructions
-└── .claude/                     # Claude configuration (auto-created)
+claude-project-template/
+├── setup-project.bat            # Run this to set up your project
+├── README.md                    # This documentation
+├── SETUP-GUIDE-FOR-SHARING.md  # Quick setup guide
+└── LICENSE                      # MIT License
+
+After running setup-project.bat:
+├── CLAUDE.md                    # Project context (generated)
+└── start-claude.bat             # Click to launch Claude Code (generated)
 ```
 
 
@@ -129,7 +125,7 @@ claude-project-manager/
 ---
 
 1. **Setup**: Run `setup-project.bat` in your project
-2. **Open**: Open the folder in Claude Code
+2. **Launch**: Click `start-claude.bat` 
 3. **Context**: Say "Read the CLAUDE.md file for project context"
 4. **Work**: Claude now knows about your project!
 
@@ -138,8 +134,9 @@ claude-project-manager/
 
 ---
 
-- Projects automatically resume where you left off
-- Multiple projects can run simultaneously
+- Edit CLAUDE.md to add project-specific notes
+- The launcher finds Claude Code automatically
+- Works with any Windows project folder
 - Conversations persist through system restarts
 - Each project folder becomes a persistent workspace
 - No API keys needed - uses your Claude Pro subscription
