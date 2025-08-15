@@ -1,44 +1,31 @@
-<div align="center">
+# 🔥 Persistant Claude Code 🔥
 
-<h1 style="color: white; font-size: 48px;">🔥 Persistant Claude Code 🔥</h1>
-
-<h3>Never Lose Your Claude Context Again!</h3>
-
-<br>
+### Never Lose Your Claude Context Again!
 
 ![Persistent Claude Banner](./PERSISTANT_CLAUDE_CODE.png)
 
-</div>
-
-<br>
-<br>
 
 ## 📢 SHARE THIS PROJECT
 
 ---
 
-> **Repository:** https://github.com/stefans71/Persistent_Claude
+**Repository:** https://github.com/stefans71/Persistent_Claude
 
-<br>
 
 ## 📌 ADD THIS BADGE
 
-> If you use this template, add this badge to your README:
+If you use this template, add this badge to your README:
 
 [![Built with Persistent Claude](https://img.shields.io/badge/Built%20with-Persistent%20Claude-orange)](https://github.com/stefans71/Persistent_Claude)
 
 
-<br>
-<br>
 
 ## 🚀 WHAT IS THIS?
 
-> ### A Windows batch template that provides persistent Claude Code sessions for multiple projects simultaneously.
-> 
-> Each project maintains its own conversation history and context. Work on multiple projects without losing your place!
+A Windows batch template that provides persistent Claude Code sessions for multiple projects simultaneously.
 
-<br>
-<br>
+Each project maintains its own conversation history and context. Work on multiple projects without losing your place!
+
 
 ## ✨ KEY FEATURES
 
@@ -53,22 +40,18 @@
 - **200K Token Context**: Full Claude context window per project
 
 
-<br>
 
-> ### 💭 Why I Built This
-> *I had Claude Code build this so I don't have to worry about Claude losing context for each of my projects. I hope it helps others with this same issue!*
+### 💭 Why I Built This
+*I had Claude Code build this so I don't have to worry about Claude losing context for each of my projects. I hope it helps others with this same issue!*
 
-<br>
 
 ## ✅ SECURITY STATUS
 
-> ### ✔️ Repository Verified Safe
-> **Last Check:** August 15, 2025  
-> **Status:** Clean - No malicious code detected  
-> 👉 Scroll down for the security verification prompt to validate with Claude Code
+**✔️ Repository Verified Safe**  
+**Last Check:** August 15, 2025  
+**Status:** Clean - No malicious code detected  
+👉 Scroll down for the security verification prompt to validate with Claude Code
 
-<br>
-<br>
 
 ## 📋 REQUIREMENTS
 
@@ -80,8 +63,6 @@
 ✅ **Claude Pro subscription** ($20/month or Pro Plan)  
 ✅ **No API key needed** - uses browser authentication
 
-<br>
-<br>
 
 ## 🚀 QUICK START
 
@@ -96,7 +77,6 @@
 5. Copy template to create new projects
 ```
 
-<br>
 
 ### 🔹 Option 2: Manual Prerequisites
 If you prefer manual installation or already have some components:
@@ -106,8 +86,6 @@ If you prefer manual installation or already have some components:
 - Claude CLI: **npm install -g @anthropic/claude-cli**
 - tmux: **sudo apt install tmux**
 
-<br>
-<br>
 
 ## 📁 HOW TO USE
 
@@ -119,7 +97,6 @@ If you prefer manual installation or already have some components:
 3. Double-click **setup-project.bat**
 4. Double-click **claude.bat** to start
 
-<br>
 
 ### 📂 For Existing Projects
 1. Copy these files to your project:
@@ -129,8 +106,6 @@ If you prefer manual installation or already have some components:
 2. Run **setup-project.bat**
 3. Use **claude.bat** to start Claude
 
-<br>
-<br>
 
 ## 🎯 HOW IT WORKS
 
@@ -148,8 +123,6 @@ Each project gets:
 - Automatic resume capability
 - Strict directory isolation - Claude cannot access files outside your project folder
 
-<br>
-<br>
 
 ## 📝 PROJECT STRUCTURE
 
@@ -168,8 +141,6 @@ claude-project-manager/
 └── .claude/                     # Claude configuration (auto-created)
 ```
 
-<br>
-<br>
 
 ## 🔧 COMMANDS
 
@@ -184,7 +155,6 @@ claude-project-manager/
 | **/help** | See all available commands |
 | **exit** | Exit Claude |
 
-<br>
 
 ### tmux Commands:
 
@@ -194,8 +164,6 @@ claude-project-manager/
 | **tmux list-sessions** | List all sessions |
 | **tmux attach -t claude-[project]** | Reattach to session |
 
-<br>
-<br>
 
 ## 💡 PRO TIPS
 
@@ -208,8 +176,6 @@ claude-project-manager/
 - No API keys needed - uses your Claude Pro subscription
 - Claude is isolated to your project directory - won't accidentally read parent folders or follow imports outside
 
-<br>
-<br>
 
 ## 🚀 ROADMAP
 
@@ -231,8 +197,6 @@ claude-project-manager/
 - [ ] Team checkpoint sharing
 - [ ] Integration with git branches
 
-<br>
-<br>
 
 ## 🤝 CONTRIBUTING
 
@@ -240,7 +204,6 @@ claude-project-manager/
 
 Feel free to submit issues and enhancement requests!
 
-<br>
 
 ## 📄 LICENSE
 
@@ -248,7 +211,6 @@ Feel free to submit issues and enhancement requests!
 
 MIT License - feel free to use this template for your projects
 
-<br>
 
 ## 🙏 CREDITS
 
@@ -262,7 +224,6 @@ Created to solve the problem of managing multiple Claude Code projects with pers
 
 ---
 
-<br>
 
 **━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
