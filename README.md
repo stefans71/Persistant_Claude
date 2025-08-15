@@ -22,7 +22,18 @@ If you use this template, add this badge to your README:
 
 ## 🚀 WHAT IS THIS?
 
-A Windows template that provides TRUE conversation persistence for Claude Code using tmux sessions. Your conversations continue exactly where you left off - even mid-sentence - across system restarts, disconnections, and days or weeks later.
+**The EASIEST way to get started with Claude Code on Windows!**
+
+This simple batch file handles EVERYTHING:
+- ✅ **Installs WSL & Ubuntu** - Windows' built-in Linux feature (no manual downloads!)
+- ✅ **Installs Node.js** - Required for Claude Code
+- ✅ **Installs Claude Code CLI** - Anthropic's AI coding assistant  
+- ✅ **Sets up conversation persistence** - Never lose your work
+
+**Perfect for beginners:** Just run one file, answer Y/N prompts, done!
+**Perfect for pros:** Skip the tedious setup, get coding immediately!
+
+Your conversations persist across sessions - pick up exactly where you left off, even days later!
 
 
 ## ✨ WHAT THIS ACTUALLY DOES
@@ -68,10 +79,16 @@ All activities are transparent and visible in the batch file code. No hidden ope
 
 ### You'll Need:
 
-✅ **Windows 10/11**  
-✅ **Anthropic Claude Subscription** (Pro or Team plan required)  
-✅ **WSL Ubuntu** (for tmux persistence - required for full features)
-✅ Everything else is automated!
+✅ **Windows 10/11** - That's it!
+✅ **Anthropic Claude Subscription** (Pro or Team plan required)
+
+### What Gets Installed Automatically:
+
+✅ **WSL with Ubuntu** - Windows installs this for you (built-in feature)
+✅ **Node.js** - Downloaded from nodejs.org  
+✅ **Claude Code CLI** - Via npm
+
+All installations ask for your permission with Y/N prompts!
 
 ### 🎯 Fully Automated Installation:
 
@@ -156,6 +173,18 @@ What gets created when you RUN claude-launcher.bat:
 ├── CLAUDE.md                    # Project context (auto-generated with your project name)
 └── claude.config                # Project settings (auto-generated)
 ```
+
+
+## 💡 Why This Works
+
+---
+
+- **Windows provides WSL** - Built-in feature that runs Linux on Windows
+- **WSL includes Ubuntu** - No separate Linux download needed  
+- **Claude Code needs Linux** - Designed for Unix environments
+- **This template bridges the gap** - One click sets up everything!
+
+Windows + WSL + Claude Code = Perfect development environment!
 
 
 ## 🔧 USAGE STEPS

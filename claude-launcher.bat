@@ -84,11 +84,57 @@ echo.
 
 :: Method 1: Try WSL with tmux (best option for persistence)
 where wsl.exe >nul 2>&1
+if %errorlevel% neq 0 (
+    :: WSL not installed at all - offer to install it
+    echo [!] WSL not installed
+    echo.
+    echo ========================================
+    echo ONE-TIME SETUP REQUIRED
+    echo ========================================
+    echo.
+    echo Claude Code requires WSL ^(Windows Subsystem for Linux^)
+    echo This is a built-in Windows feature that:
+    echo - Installs Linux environment on Windows
+    echo - Includes Ubuntu automatically ^(no separate download^)
+    echo - Takes about 5-10 minutes
+    echo.
+    choice /C YN /M "Install WSL now?"
+    if !errorlevel!==1 (
+        echo.
+        echo Installing WSL with Ubuntu...
+        echo This Windows feature will:
+        echo 1. Enable WSL
+        echo 2. Download and install Ubuntu
+        echo 3. Require ONE restart
+        echo.
+        wsl --install
+        echo.
+        echo ========================================
+        echo RESTART REQUIRED - ALMOST DONE^^!
+        echo ========================================
+        echo After restarting:
+        echo 1. Run claude-launcher.bat again
+        echo 2. Ubuntu will open to complete setup
+        echo 3. Create a username/password
+        echo 4. Claude Code will be ready^^!
+        echo.
+        pause
+        exit
+    ) else (
+        echo.
+        echo Skipping WSL installation.
+        echo Running in limited mode ^(no persistence^)...
+        echo.
+        goto :fallback_mode
+    )
+)
+
+:: WSL is installed, check for distro
 if %errorlevel%==0 (
-    :: Check if Ubuntu distro exists
-    wsl.exe -d Ubuntu -- echo test >nul 2>&1
+    :: Check if any WSL distro exists (use default)
+    wsl.exe -- echo test >nul 2>&1
     if !errorlevel!==0 (
-        echo [✓] Found WSL Ubuntu
+        echo [✓] Found WSL with Linux distribution
         echo.
         echo ========================================
         echo LAUNCHING PERSISTENT CLAUDE SESSION
@@ -105,16 +151,17 @@ if %errorlevel%==0 (
         echo Press any key to launch/resume Claude session...
         pause >nul
         
-        :: Launch tmux session in WSL (using Ubuntu distro)
-        wsl.exe -d Ubuntu -- bash -lic "cd '%WSL_PATH%' && tmux new-session -A -s 'claude-%SESSION_NAME%' 'claude code --resume; bash'"
+        :: Launch tmux session in WSL (using default distro)
+        wsl.exe -- bash -lic "cd '%WSL_PATH%' && tmux new-session -A -s 'claude-%SESSION_NAME%' 'claude code --resume; bash'"
         goto :end
     )
 )
 
+:fallback_mode
 :: Method 2: Fallback to claude-code command (no tmux persistence)
 where claude-code >nul 2>&1
 if %errorlevel%==0 (
-    echo [!] WSL Ubuntu not found
+    echo [!] WSL not available
     echo [✓] Found Claude Code CLI - using fallback mode
     echo.
     echo ========================================
@@ -122,7 +169,7 @@ if %errorlevel%==0 (
     echo ========================================
     echo.
     echo WARNING: Running without tmux - conversations won't persist!
-    echo To enable persistence, install WSL Ubuntu: wsl --install -d Ubuntu
+    echo To enable persistence, install WSL: wsl --install
     echo.
     echo IMPORTANT FIRST STEP:
     echo ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -139,7 +186,7 @@ if %errorlevel%==0 (
 :: Method 3: Check for globally installed claude command (no tmux)
 where claude >nul 2>&1
 if %errorlevel%==0 (
-    echo [!] WSL Ubuntu not found
+    echo [!] WSL not available
     echo [✓] Found Claude CLI - using fallback mode
     echo.
     echo ========================================
@@ -147,7 +194,7 @@ if %errorlevel%==0 (
     echo ========================================
     echo.
     echo WARNING: Running without tmux - conversations won't persist!
-    echo To enable persistence, install WSL Ubuntu: wsl --install -d Ubuntu
+    echo To enable persistence, install WSL: wsl --install
     echo.
     echo IMPORTANT FIRST STEP:
     echo ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
