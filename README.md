@@ -31,7 +31,8 @@ A Windows template that provides TRUE conversation persistence for Claude Code u
 
 - **TRUE Conversation Persistence**: Uses tmux to maintain conversations across sessions
 - **Resume Mid-Sentence**: Pick up exactly where you left off, even after days
-- **Creates CLAUDE.md files**: Additional context file for each project
+- **Context Preservation**: Includes commands to save context before Claude's memory compacts
+- **Creates CLAUDE.md files**: Permanent context file that survives memory limits
 - **One-File Solution**: Just run claude-launcher.bat
 - **Fully Automated**: Installs everything needed automatically
 - **Project Isolation**: Each project has its own tmux session with separate conversation history
@@ -46,7 +47,8 @@ A Windows template that provides TRUE conversation persistence for Claude Code u
 
 This template contains a simple batch file that:
 - Creates text files (CLAUDE.md and claude.config) in your project
-- Launches Claude Code CLI
+- Launches WSL Ubuntu with tmux for session persistence
+- Runs Claude Code CLI with --resume flag for conversation continuity
 - Optionally downloads Node.js from the official Microsoft site
 
 **No system modifications, no data collection, completely transparent!**
@@ -62,8 +64,7 @@ This template contains a simple batch file that:
 
 ✅ **Windows 10/11**  
 ✅ **Anthropic Claude Subscription** (Pro or Team plan required)  
-✅ **Windows Terminal** (for tmux persistence - optional but recommended)
-✅ **WSL Ubuntu** (for tmux persistence - optional but recommended)
+✅ **WSL Ubuntu** (for tmux persistence - required for full features)
 ✅ Everything else is automated!
 
 ### 🎯 Fully Automated Installation:
@@ -104,9 +105,9 @@ When you run `claude-launcher.bat`, it automatically:
 2. Copy **claude-launcher.bat** to your new project folder
 3. Run **claude-launcher.bat** - it will:
    - Create CLAUDE.md context file
-   - Auto-install Node.js if needed
-   - Auto-install Claude Code CLI if needed
-   - Launch Claude Code in your project
+   - Launch WSL Ubuntu with tmux session
+   - Resume your previous conversation (or start new)
+   - Auto-install dependencies if needed
 
 
 ### 📂 For Existing Projects
@@ -154,10 +155,84 @@ What gets created when you RUN claude-launcher.bat:
 4. **Return**: Run `claude-launcher.bat` again to resume exactly where you left off!
 
 
+## ⚠️ CRITICAL: Preventing Context Loss
+
+---
+
+### Watch the Context Indicator!
+Claude Code CLI shows a **percentage indicator** when context starts filling up:
+- **Appears around 75-80% full** (shows remaining capacity)
+- **Located in the CLI interface** during your session
+- **When you see "25%" or lower** = TIME TO SAVE YOUR CONTEXT!
+
+### 🚨 WHEN YOU SEE THE PERCENTAGE INDICATOR - ONE PROMPT DOES IT ALL!
+
+**Just copy and paste this prompt into Claude - it will automatically save everything to CLAUDE.md:**
+
+```
+The context indicator is showing [X]% remaining. Create a comprehensive summary NOW:
+
+1. List ALL files we've created or modified with their exact paths and purposes
+2. Document ALL solutions we've implemented (working and failed attempts)
+3. Record ALL key decisions and technical choices with reasoning
+4. Note ALL current bugs, issues, and their status
+5. Include ALL important code patterns, approaches, and conventions we're following
+6. Save ALL working commands, especially complex ones
+7. Document exactly where we are in the project and what's next
+8. Include any "gotchas" or things to remember
+
+Format as:
+## Context Checkpoint - [use bash: date '+%Y-%m-%d %H:%M:%S']
+### Files Modified:
+[List each file and what we changed]
+
+### Solutions That Worked:
+[What we successfully implemented]
+
+### Failed Attempts (DON'T REPEAT THESE):
+[What didn't work and why]
+
+### Key Decisions:
+[Technical choices and reasoning]
+
+### Current Issues/Bugs:
+[What still needs fixing]
+
+### Working Commands:
+[Commands that successfully ran]
+
+### Project State:
+[Where we are now and what's working]
+
+### Important Notes:
+[Anything special to remember]
+
+Now use the Edit tool to append this entire summary to CLAUDE.md with proper formatting. This preserves our work permanently and automatically.
+```
+
+### ✅ What Happens When You Run This:
+1. Claude analyzes the entire conversation
+2. Creates a comprehensive summary  
+3. **Automatically saves it to CLAUDE.md** (no manual work!)
+4. Your context is preserved forever
+
+**That's it! One paste, Claude does everything else.**
+
+### Context Indicator Guide:
+- **No indicator**: Plenty of context space
+- **75-80%**: Indicator appears, start thinking about summary
+- **25% or less**: SAVE IMMEDIATELY using prompt above
+- **10%**: Critical - save and consider restarting session
+- **After saving**: Continue working, context is preserved in CLAUDE.md
+
 ## 💡 PRO TIPS
 
 ---
 
+- **Context Management**:
+  - Watch for the percentage indicator in Claude CLI
+  - Save context at 25% to avoid losing work
+  - After saving, you can continue OR restart fresh with preserved context
 - **Tmux Session Controls**:
   - Detach (keep running): `Ctrl+B`, then `D`
   - List sessions: `tmux list-sessions` (in WSL)
@@ -179,7 +254,7 @@ What gets created when you RUN claude-launcher.bat:
 - ✅ **Resume conversations exactly where you left off** - even mid-sentence!
 - ✅ **Single-file solution** - `claude-launcher.bat` does everything
 - ✅ **FULLY AUTOMATED** - Automatically installs Node.js and Claude Code CLI if needed
-- ✅ Works with Windows Terminal + WSL for best experience
+- ✅ Works directly with WSL Ubuntu for tmux sessions
 - ✅ Fallback modes for systems without tmux support
 
 ## 🚀 ROADMAP
@@ -202,6 +277,26 @@ What gets created when you RUN claude-launcher.bat:
 - [ ] Team checkpoint sharing
 - [ ] Integration with git branches
 
+
+## 🔧 TROUBLESHOOTING
+
+---
+
+### Common Issues:
+
+**"bash: claude: command not found"**
+- Claude needs to be installed in WSL: `npm install -g @anthropic-ai/claude-code`
+- Make sure you're using WSL Ubuntu (not other distros)
+
+**"Failed to connect to server"**
+- Ensure tmux is installed in WSL: `sudo apt-get install tmux`
+
+**"The system cannot find the file specified"**
+- Install WSL Ubuntu: `wsl --install -d Ubuntu`
+- Restart your computer after WSL installation
+
+**Session already exists**
+- To kill old session: Open WSL and run `tmux kill-session -t claude-[project-name]`
 
 ## 🤝 CONTRIBUTING
 

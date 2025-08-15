@@ -82,12 +82,13 @@ echo Detecting Claude Code CLI installation...
 echo ========================================
 echo.
 
-:: Method 1: Try Windows Terminal with tmux (best option for persistence)
-where wt.exe >nul 2>&1
+:: Method 1: Try WSL with tmux (best option for persistence)
+where wsl.exe >nul 2>&1
 if %errorlevel%==0 (
-    where wsl.exe >nul 2>&1
+    :: Check if Ubuntu distro exists
+    wsl.exe -d Ubuntu -- echo test >nul 2>&1
     if !errorlevel!==0 (
-        echo [✓] Found Windows Terminal and WSL
+        echo [✓] Found WSL Ubuntu
         echo.
         echo ========================================
         echo LAUNCHING PERSISTENT CLAUDE SESSION
@@ -104,8 +105,8 @@ if %errorlevel%==0 (
         echo Press any key to launch/resume Claude session...
         pause >nul
         
-        :: Launch Windows Terminal with tmux session
-        wt.exe new-tab --title "Claude: %PROJECT_NAME%" -- wsl.exe -d Ubuntu bash -c "cd '%WSL_PATH%' && tmux new-session -A -s 'claude-%SESSION_NAME%' 'claude code --resume || claude code -c || claude code; bash'"
+        :: Launch tmux session in WSL (using Ubuntu distro)
+        wsl.exe -d Ubuntu -- bash -lic "cd '%WSL_PATH%' && tmux new-session -A -s 'claude-%SESSION_NAME%' 'claude code --resume; bash'"
         goto :end
     )
 )
@@ -113,7 +114,7 @@ if %errorlevel%==0 (
 :: Method 2: Fallback to claude-code command (no tmux persistence)
 where claude-code >nul 2>&1
 if %errorlevel%==0 (
-    echo [!] Windows Terminal or WSL not found
+    echo [!] WSL Ubuntu not found
     echo [✓] Found Claude Code CLI - using fallback mode
     echo.
     echo ========================================
@@ -121,7 +122,7 @@ if %errorlevel%==0 (
     echo ========================================
     echo.
     echo WARNING: Running without tmux - conversations won't persist!
-    echo To enable persistence, install Windows Terminal and WSL.
+    echo To enable persistence, install WSL Ubuntu: wsl --install -d Ubuntu
     echo.
     echo IMPORTANT FIRST STEP:
     echo ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -138,7 +139,7 @@ if %errorlevel%==0 (
 :: Method 3: Check for globally installed claude command (no tmux)
 where claude >nul 2>&1
 if %errorlevel%==0 (
-    echo [!] Windows Terminal not found
+    echo [!] WSL Ubuntu not found
     echo [✓] Found Claude CLI - using fallback mode
     echo.
     echo ========================================
@@ -146,7 +147,7 @@ if %errorlevel%==0 (
     echo ========================================
     echo.
     echo WARNING: Running without tmux - conversations won't persist!
-    echo To enable persistence, install Windows Terminal.
+    echo To enable persistence, install WSL Ubuntu: wsl --install -d Ubuntu
     echo.
     echo IMPORTANT FIRST STEP:
     echo ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
