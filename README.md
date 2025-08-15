@@ -2,21 +2,30 @@
 
 ![Persistent Claude Banner](./PERSISTANT_CLAUDE_CODE.png)
 
-## 📢 Share This Project
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**📢 SHARE THIS PROJECT**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
 **Repository:** `https://github.com/stefans71/Persistent_Claude`
 
-## 📌 Add This Badge
-### If you use this template, add this badge to your README:
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**📌 ADD THIS BADGE**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+
+**If you use this template, add this badge to your README:**
 
 [![Built with Persistent Claude](https://img.shields.io/badge/Built%20with-Persistent%20Claude-orange)](https://github.com/stefans71/Persistent_Claude)
 
 
-## 🚀 Persistent Claude Project Manager
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**🚀 PERSISTENT CLAUDE PROJECT MANAGER**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
-### A Windows batch template that provides persistent Claude Code sessions for multiple projects simultaneously. Each project maintains its own conversation history and context.
+**A Windows batch template that provides persistent Claude Code sessions for multiple projects simultaneously. Each project maintains its own conversation history and context.**
 
-## ✨ Features
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**✨ FEATURES**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
 - **Persistent Sessions**: Resume conversations exactly where you left off
 - **Multi-Project Support**: Work on multiple projects with isolated contexts
@@ -27,20 +36,26 @@
 - **200K Token Context**: Full Claude context window per project
 
 
-## I had Claude Code build this so I don't have to worry about Claude losing context for each of my projects. I hope it helps others with this same issue.
+**I had Claude Code build this so I don't have to worry about Claude losing context for each of my projects. I hope it helps others with this same issue.**
 
-## ✅ Security Status
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**✅ SECURITY STATUS**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 **Repository verified safe** - Scroll down for the complete security verification prompt to validate with Claude Code
 
-## 📋 Requirements
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**📋 REQUIREMENTS**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
 - Windows 10/11
 - Claude Pro subscription ($20/month or Pro Plan)
 - No API key needed - uses browser authentication
 
-## 🚀 Quick Start
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**🚀 QUICK START**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
-### Option 1: First-Time Setup (Automated)
+**Option 1: First-Time Setup (Automated)**
 ```batch
 1. Download/clone this repository
 2. Right-click INSTALL-PREREQUISITES.bat → Run as administrator
@@ -49,7 +64,7 @@
 5. Copy template to create new projects
 ```
 
-### Option 2: Manual Prerequisites
+**Option 2: Manual Prerequisites**
 If you prefer manual installation or already have some components:
 - Windows 10/11 with WSL2
 - Ubuntu for WSL (`wsl --install -d Ubuntu`)
@@ -57,15 +72,17 @@ If you prefer manual installation or already have some components:
 - Claude CLI (`npm install -g @anthropic/claude-cli`)
 - tmux (`sudo apt install tmux`)
 
-## 📁 Usage
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**📁 USAGE**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
-### For New Projects
+**For New Projects:**
 1. Copy the entire template folder
 2. Rename to your project name
 3. Double-click `setup-project.bat`
 4. Double-click `claude.bat` to start
 
-### For Existing Projects
+**For Existing Projects:**
 1. Copy these files to your project:
    - `setup-project.bat`
    - `claude.bat.template`
@@ -73,7 +90,9 @@ If you prefer manual installation or already have some components:
 2. Run `setup-project.bat`
 3. Use `claude.bat` to start Claude
 
-## 🎯 How It Works
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**🎯 HOW IT WORKS**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
 The system uses three layers:
 - **tmux**: Manages terminal sessions (background running)
@@ -87,7 +106,9 @@ Each project gets:
 - Automatic resume capability
 - Strict directory isolation - Claude cannot access files outside your project folder
 
-## 📝 Project Structure
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**📝 PROJECT STRUCTURE**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
 ```
 claude-project-manager/
@@ -102,7 +123,9 @@ claude-project-manager/
 └── .claude/                     # Claude configuration (auto-created)
 ```
 
-## 🔧 Commands
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**🔧 COMMANDS**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
 Inside Claude sessions:
 - `/context` - View context usage
@@ -115,7 +138,9 @@ tmux commands:
 - `tmux list-sessions` - List all sessions
 - `tmux attach -t claude-[project]` - Reattach to session
 
-## 💡 Tips
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**💡 TIPS**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
 - Projects automatically resume where you left off
 - Multiple projects can run simultaneously
@@ -124,33 +149,41 @@ tmux commands:
 - No API keys needed - uses your Claude Pro subscription
 - Claude is isolated to your project directory - won't accidentally read parent folders or follow imports outside
 
-## 🚀 Roadmap
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**🚀 ROADMAP**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
-### Current Features (v1.0)
+**Current Features (v1.0)**
 - ✅ Project isolation
 - ✅ Persistent sessions per project
 - ✅ Directory access restrictions
 
-### Planned Features (v2.0)
+**Planned Features (v2.0)**
 - [ ] Context checkpoints - Save/load specific context states
 - [ ] Checkpoint browser - Easy selection of saved contexts  
 - [ ] Export context to markdown for team sharing
 - [ ] Auto-checkpoint on task completion
 
-### Future Ideas
+**Future Ideas**
 - [ ] Context templates for common workflows
 - [ ] Team checkpoint sharing
 - [ ] Integration with git branches
 
-## 🤝 Contributing
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**🤝 CONTRIBUTING**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
 Feel free to submit issues and enhancement requests!
 
-## 📄 License
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**📄 LICENSE**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
 MIT License - feel free to use this template for your projects
 
-## 🙏 Credits
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
+**🙏 CREDITS**
+**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━**
 
 Created to solve the problem of managing multiple Claude Code projects with persistent context across sessions.
 
