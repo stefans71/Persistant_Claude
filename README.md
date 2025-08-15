@@ -1,5 +1,7 @@
 # Persistant Claude Code
 
+## I had Claude Code build this so I don't have to worry about Claude losing context for each of my projects. I hope it helps others with this same issue.
+
 
 ![Persistent Claude Banner](./PERSISTANT_CLAUDE_CODE.png)
 
