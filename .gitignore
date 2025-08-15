@@ -1,6 +1,6 @@
-# Generated files (created by setup-project.bat)
-claude.bat
-launch-claude.sh
+# Generated files (created by claude-launcher.bat)
+CLAUDE.md
+claude.config
 
 # Claude directories
 .claude/
