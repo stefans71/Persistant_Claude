@@ -152,7 +152,7 @@ if %errorlevel%==0 (
         pause >nul
         
         :: Launch tmux session in WSL (using default distro)
-        wsl.exe -- bash -lic "cd '%WSL_PATH%' && tmux new-session -A -s 'claude-%SESSION_NAME%' 'claude code --resume; bash'"
+        wsl.exe -- bash -lic "cd '%WSL_PATH%' && tmux new-session -A -s 'claude-%SESSION_NAME%' 'claude --resume; bash'"
         goto :end
     )
 )
